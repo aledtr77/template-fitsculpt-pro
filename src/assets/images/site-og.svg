@@ -1,0 +1,20 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="80" y1="60" x2="1130" y2="580" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7FBFC" />
+      <stop offset="1" stop-color="#D8E7E9" />
+    </linearGradient>
+    <linearGradient id="stroke" x1="330" y1="170" x2="880" y2="470" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4F8C8D" />
+      <stop offset="1" stop-color="#1E555A" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" rx="30" fill="url(#bg)" />
+  <rect x="72" y="72" width="1056" height="486" rx="26" stroke="url(#stroke)" stroke-width="8" />
+  <path d="M250 400L430 268L588 356L802 184L946 286" stroke="url(#stroke)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="430" cy="268" r="18" fill="#2E6F73" />
+  <circle cx="802" cy="184" r="18" fill="#2E6F73" />
+  <text x="600" y="476" fill="#172026" font-family="Arial, Helvetica, sans-serif" font-size="64" font-weight="700" text-anchor="middle">Neutral Site Starter</text>
+  <text x="600" y="532" fill="#4B5F66" font-family="Arial, Helvetica, sans-serif" font-size="28" text-anchor="middle">Replace brand, copy and visuals with your own content.</text>
+</svg>
