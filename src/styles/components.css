@@ -21,13 +21,12 @@
 
 .btn-primary {
   background: var(--gradient-accent);
-  color: #080a0f;
-  box-shadow: 0 4px 18px rgba(163, 230, 53, 0.38);
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(249, 115, 22, 0.35);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-glow);
   filter: brightness(1.08);
 }
 
@@ -162,7 +161,7 @@
 
 .modal-close:hover {
   background: var(--accent-primary);
-  color: #080a0f;
+  color: #ffffff;
 }
 
 /* Forms & Input Controls */
@@ -191,7 +190,7 @@
 
 .form-input:focus, .form-select:focus, .form-textarea:focus {
   border-color: var(--accent-primary);
-  box-shadow: 0 0 0 3px rgba(163, 230, 53, 0.2);
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2);
 }
 
 /* FAQ Accordion */
@@ -245,7 +244,7 @@
 
 /* Etsy Lead Magnet Banner */
 .etsy-promo-banner {
-  background: linear-gradient(135deg, rgba(163, 230, 53, 0.12) 0%, rgba(16, 185, 129, 0.12) 100%);
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.12) 0%, rgba(2, 132, 199, 0.12) 100%);
   border: 1px solid var(--accent-primary);
   border-radius: var(--radius-lg);
   padding: 2.5rem;
@@ -264,7 +263,7 @@
   gap: 0.5rem;
   padding: 0.35rem 0.85rem;
   background: var(--accent-primary);
-  color: #080a0f;
+  color: #ffffff;
   font-weight: 800;
   font-size: 0.8rem;
   border-radius: var(--radius-full);

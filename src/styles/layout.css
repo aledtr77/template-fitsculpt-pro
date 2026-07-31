@@ -5,28 +5,6 @@
   position: relative;
 }
 
-/* Ambient Glow Orbs */
-.glow-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(90px);
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.5;
-}
-
-.glow-orb-primary {
-  width: clamp(250px, 40vw, 550px);
-  height: clamp(250px, 40vw, 550px);
-  background: var(--accent-primary);
-}
-
-.glow-orb-secondary {
-  width: clamp(200px, 35vw, 450px);
-  height: clamp(200px, 35vw, 450px);
-  background: var(--accent-secondary);
-}
-
 /* Header & Navigation */
 .site-header {
   position: fixed;

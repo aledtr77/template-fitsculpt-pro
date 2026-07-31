@@ -5,6 +5,7 @@
 export function initAnimations() {
   initHeaderScroll();
   initMobileNav();
+  initScrollSpy();
   initProgramTabs();
   initFaqAccordion();
   initPricingToggle();
@@ -24,6 +25,35 @@ function initHeaderScroll() {
 
   window.addEventListener('scroll', handleScroll);
   handleScroll();
+}
+
+function initScrollSpy() {
+  const navLinks = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('section[id]');
+
+  if (navLinks.length === 0 || sections.length === 0) return;
+
+  const handleScrollSpy = () => {
+    const scrollY = window.scrollY + 120;
+
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      const sectionId = section.getAttribute('id');
+
+      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+        navLinks.forEach((link) => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${sectionId}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  };
+
+  window.addEventListener('scroll', handleScrollSpy);
+  handleScrollSpy();
 }
 
 function initMobileNav() {
