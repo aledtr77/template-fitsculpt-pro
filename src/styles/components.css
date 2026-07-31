@@ -8,7 +8,7 @@
   gap: 0.6rem;
   padding: 0.85rem 1.75rem;
   font-family: var(--font-body);
-  font-weight: 700;
+  font-weight: 800;
   font-size: 0.95rem;
   border-radius: var(--radius-full);
   transition: all var(--transition-bounce);
@@ -16,18 +16,19 @@
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  letter-spacing: -0.01em;
 }
 
 .btn-primary {
   background: var(--gradient-accent);
-  color: #ffffff;
-  box-shadow: 0 4px 15px rgba(255, 59, 92, 0.4);
+  color: #080a0f;
+  box-shadow: 0 4px 18px rgba(163, 230, 53, 0.38);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-glow);
-  filter: brightness(1.1);
+  filter: brightness(1.08);
 }
 
 .btn-secondary {
@@ -40,18 +41,19 @@
 .btn-secondary:hover {
   background: rgba(255, 255, 255, 0.1);
   border-color: var(--border-accent);
+  color: var(--accent-primary);
   transform: translateY(-2px);
 }
 
 .btn-gold {
-  background: var(--gradient-gold);
-  color: #000000;
-  box-shadow: var(--shadow-glow-gold);
+  background: var(--gradient-accent);
+  color: #080a0f;
+  box-shadow: var(--shadow-glow);
 }
 
 .btn-gold:hover {
   transform: translateY(-2px);
-  filter: brightness(1.05);
+  filter: brightness(1.08);
 }
 
 .btn-lg {
@@ -108,8 +110,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(10, 10, 15, 0.85);
-  backdrop-filter: blur(8px);
+  background: rgba(9, 11, 16, 0.85);
+  backdrop-filter: blur(10px);
   z-index: 2000;
   display: flex;
   align-items: center;
@@ -160,7 +162,7 @@
 
 .modal-close:hover {
   background: var(--accent-primary);
-  color: #ffffff;
+  color: #080a0f;
 }
 
 /* Forms & Input Controls */
@@ -189,7 +191,7 @@
 
 .form-input:focus, .form-select:focus, .form-textarea:focus {
   border-color: var(--accent-primary);
-  box-shadow: 0 0 0 3px rgba(255, 59, 92, 0.15);
+  box-shadow: 0 0 0 3px rgba(163, 230, 53, 0.2);
 }
 
 /* FAQ Accordion */
@@ -243,8 +245,8 @@
 
 /* Etsy Lead Magnet Banner */
 .etsy-promo-banner {
-  background: linear-gradient(135deg, rgba(255, 184, 0, 0.12) 0%, rgba(255, 59, 92, 0.12) 100%);
-  border: 1px solid var(--accent-gold);
+  background: linear-gradient(135deg, rgba(163, 230, 53, 0.12) 0%, rgba(16, 185, 129, 0.12) 100%);
+  border: 1px solid var(--accent-primary);
   border-radius: var(--radius-lg);
   padding: 2.5rem;
   display: flex;
@@ -261,8 +263,8 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.35rem 0.85rem;
-  background: var(--accent-gold);
-  color: #000000;
+  background: var(--accent-primary);
+  color: #080a0f;
   font-weight: 800;
   font-size: 0.8rem;
   border-radius: var(--radius-full);
@@ -290,3 +292,4 @@
     margin: 0 auto;
   }
 }
+

@@ -508,7 +508,7 @@
   left: 50%;
   transform: translateX(-50%);
   background: var(--gradient-accent);
-  color: #ffffff;
+  color: #080a0f;
   padding: 0.3rem 1.1rem;
   border-radius: var(--radius-full);
   font-size: 0.75rem;
@@ -552,7 +552,28 @@
   flex-shrink: 0;
 }
 
-/* Fluid Media Queries */
+/* Wide Desktop Screen Scaling (1400px+) */
+@media (min-width: 1400px) {
+  .hero-grid {
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: 5rem;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr 1.2fr;
+    gap: 5rem;
+  }
+
+  .programs-grid, .transformations-grid, .pricing-grid {
+    gap: 2.5rem;
+  }
+
+  .hero-image-wrapper img {
+    max-height: 620px;
+  }
+}
+
+/* Fluid Media Queries for Smaller Devices */
 @media (max-width: 1024px) {
   .hero-grid, .about-grid, .calculator-grid {
     grid-template-columns: 1fr;
@@ -610,4 +631,5 @@
     grid-template-columns: 1fr;
   }
 }
+
 

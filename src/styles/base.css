@@ -105,13 +105,13 @@ ul, ol {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.35rem 1rem;
-  background: rgba(255, 59, 92, 0.1);
+  padding: 0.38rem 1.1rem;
+  background: rgba(163, 230, 53, 0.12);
   border: 1px solid var(--border-accent);
   border-radius: var(--radius-full);
   color: var(--accent-primary);
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin-bottom: 1rem;
