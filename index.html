@@ -11,12 +11,15 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="FitSculpt Pro - Female Fitness & Body Transformation">
   <meta property="og:description" content="Custom workout programs and nutrition guidance tailored specifically for women.">
-  <meta property="og:image" content="./src/assets/images/home-hero-main.jpg">
+  <meta property="og:image" content="./src/assets/images/hero-model.png">
   
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ff3b5c'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f43f5e'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>">
 </head>
 <body>
+
+  <!-- Backdrop for Mobile Drawer -->
+  <div class="nav-backdrop" id="navBackdrop"></div>
 
   <!-- Site Header -->
   <header class="site-header" id="siteHeader">
@@ -58,6 +61,8 @@
   <main>
     <!-- Hero Section -->
     <section class="hero-section" id="hero">
+      <div class="glow-orb glow-orb-primary" style="top: -10%; right: 10%;"></div>
+      <div class="glow-orb glow-orb-secondary" style="bottom: 10%; left: -5%;"></div>
       <div class="container">
         <div class="hero-grid">
           <div class="hero-content">
@@ -75,9 +80,9 @@
 
             <div class="hero-trust-badges">
               <div class="avatars-group">
-                <img src="./src/assets/images/home-chiara.jpg" alt="Client 1" class="avatar-img">
-                <img src="./src/assets/images/home-elisa.jpg" alt="Client 2" class="avatar-img">
-                <img src="./src/assets/images/home-marta.jpg" alt="Client 3" class="avatar-img">
+                <img src="./src/assets/images/result-1.png" alt="Client 1" class="avatar-img">
+                <img src="./src/assets/images/result-2.png" alt="Client 2" class="avatar-img">
+                <img src="./src/assets/images/result-3.png" alt="Client 3" class="avatar-img">
               </div>
               <div class="trust-text">
                 <p>Over 1,200+ Women Transformed</p>
@@ -88,7 +93,7 @@
 
           <div class="hero-visual">
             <div class="hero-image-wrapper">
-              <img src="./src/assets/images/home-hero-main.jpg" alt="FitSculpt Coach Elena Training">
+              <img src="./src/assets/images/hero-model.png" alt="FitSculpt Female Model Coach">
             </div>
             <div class="hero-floating-badge">
               <div class="floating-icon">
@@ -123,7 +128,7 @@
             <p>Client Retention</p>
           </div>
           <div class="stat-item">
-            <h3 class="text-gradient-gold">500k+</h3>
+            <h3 class="text-gradient">500k+</h3>
             <p>Pounds Lost</p>
           </div>
         </div>
@@ -135,7 +140,7 @@
       <div class="container">
         <div class="about-grid">
           <div class="about-image-card">
-            <img src="./src/assets/images/home-hero-core.jpg" alt="Coach Elena Portrait">
+            <img src="./src/assets/images/coach-elena.png" alt="Coach Elena Vance">
           </div>
           <div class="about-content">
             <div class="section-tag">Meet Your Coach</div>
@@ -247,7 +252,7 @@
         <div class="programs-grid">
           <!-- Program 1 -->
           <div class="program-card" data-category="sculpt">
-            <img src="./src/assets/images/home-hero-strength.jpg" alt="Sculpt & Tone" class="program-img">
+            <img src="./src/assets/images/result-1.png" alt="Sculpt & Tone" class="program-img">
             <div class="program-body">
               <span class="program-badge">Body Sculpting</span>
               <h3>Sculpt & Tone Protocol</h3>
@@ -261,7 +266,7 @@
 
           <!-- Program 2 -->
           <div class="program-card" data-category="hiit">
-            <img src="./src/assets/images/home-hero-main.jpg" alt="Fat Loss & HIIT" class="program-img">
+            <img src="./src/assets/images/result-2.png" alt="Fat Loss & HIIT" class="program-img">
             <div class="program-body">
               <span class="program-badge">Fat Loss</span>
               <h3>Metabolic HIIT Burn</h3>
@@ -275,7 +280,7 @@
 
           <!-- Program 3 -->
           <div class="program-card" data-category="vip">
-            <img src="./src/assets/images/results-consistency.jpg" alt="1-on-1 VIP Coaching" class="program-img">
+            <img src="./src/assets/images/result-3.png" alt="1-on-1 VIP Coaching" class="program-img">
             <div class="program-body">
               <span class="program-badge">VIP Coaching</span>
               <h3>1-on-1 VIP Transformation</h3>
@@ -305,7 +310,7 @@
           <!-- Client 1 -->
           <div class="transformation-card">
             <div class="client-header">
-              <img src="./src/assets/images/home-chiara.jpg" alt="Chiara S." class="client-avatar">
+              <img src="./src/assets/images/result-1.png" alt="Chiara S." class="client-avatar">
               <div class="client-name">
                 <h4>Chiara S.</h4>
                 <span>★★★★★ Verified Client</span>
@@ -321,7 +326,7 @@
           <!-- Client 2 -->
           <div class="transformation-card">
             <div class="client-header">
-              <img src="./src/assets/images/home-elisa.jpg" alt="Elisa M." class="client-avatar">
+              <img src="./src/assets/images/result-2.png" alt="Elisa M." class="client-avatar">
               <div class="client-name">
                 <h4>Elisa M.</h4>
                 <span>★★★★★ Verified Client</span>
@@ -337,7 +342,7 @@
           <!-- Client 3 -->
           <div class="transformation-card">
             <div class="client-header">
-              <img src="./src/assets/images/home-marta.jpg" alt="Marta R." class="client-avatar">
+              <img src="./src/assets/images/result-3.png" alt="Marta R." class="client-avatar">
               <div class="client-name">
                 <h4>Marta R.</h4>
                 <span>★★★★★ Verified Client</span>

@@ -29,20 +29,28 @@ function initHeaderScroll() {
 function initMobileNav() {
   const mobileToggle = document.getElementById('mobileToggle');
   const navMenu = document.getElementById('navMenu');
+  const navBackdrop = document.getElementById('navBackdrop');
   const navLinks = document.querySelectorAll('.nav-link');
 
   if (!mobileToggle || !navMenu) return;
 
-  mobileToggle.addEventListener('click', () => {
-    mobileToggle.classList.toggle('active');
-    navMenu.classList.toggle('active');
-  });
+  const toggleMenu = (show) => {
+    const isActive = show !== undefined ? show : !navMenu.classList.contains('active');
+    mobileToggle.classList.toggle('active', isActive);
+    navMenu.classList.toggle('active', isActive);
+    if (navBackdrop) {
+      navBackdrop.classList.toggle('active', isActive);
+    }
+  };
+
+  mobileToggle.addEventListener('click', () => toggleMenu());
+
+  if (navBackdrop) {
+    navBackdrop.addEventListener('click', () => toggleMenu(false));
+  }
 
   navLinks.forEach((link) => {
-    link.addEventListener('click', () => {
-      mobileToggle.classList.remove('active');
-      navMenu.classList.remove('active');
-    });
+    link.addEventListener('click', () => toggleMenu(false));
   });
 }
 
