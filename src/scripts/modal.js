@@ -1,67 +1,115 @@
 /**
  * Modal & Lead Booking Module
+ *
+ * The dialog is a plain element rather than <dialog>, so the backdrop blur and
+ * scale-in transition stay under CSS control. That makes focus management ours
+ * to handle: trap it while open, hand it back on close.
  */
+
+import { showFormSuccess } from './forms.js';
+
+const FOCUSABLE = [
+  'a[href]',
+  'button:not([disabled])',
+  'input:not([disabled])',
+  'select:not([disabled])',
+  'textarea:not([disabled])',
+  '[tabindex]:not([tabindex="-1"])'
+].join(', ');
 
 export function initModal() {
   const modalOverlay = document.getElementById('consultationModal');
+  if (!modalOverlay) return;
+
   const openModalBtns = document.querySelectorAll('[data-open-modal]');
   const closeModalBtn = document.getElementById('closeModalBtn');
   const bookingForm = document.getElementById('bookingForm');
+  let lastFocused = null;
 
-  if (!modalOverlay) return;
+  const isOpen = () => modalOverlay.classList.contains('active');
+
+  const openModal = () => {
+    lastFocused = document.activeElement;
+    modalOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    // focus() on a still-hidden element is silently ignored, which would also
+    // strand the tab trap below (it keys off activeElement being inside the
+    // dialog). The overlay's `visibility` is stepped to `visible` with no
+    // delay on open, so one forced style flush is enough to make it focusable.
+    void modalOverlay.offsetHeight;
+
+    // Prefer the first form field over the close button: this is a lead form,
+    // and dropping the caret straight into it saves the visitor a tab.
+    const target = modalOverlay.querySelector('input, select, textarea')
+      || modalOverlay.querySelector(FOCUSABLE);
+    if (target) target.focus();
+  };
+
+  const closeModal = () => {
+    if (!isOpen()) return;
+    modalOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+
+    // Hand focus back to whatever opened the dialog, or keyboard users land
+    // at the top of the document with no idea where they are.
+    if (lastFocused instanceof HTMLElement) lastFocused.focus();
+    lastFocused = null;
+  };
 
   openModalBtns.forEach((btn) => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      modalOverlay.classList.add('active');
-      document.body.style.overflow = 'hidden';
+      openModal();
     });
   });
-
-  const closeModal = () => {
-    modalOverlay.classList.remove('active');
-    document.body.style.overflow = '';
-  };
 
   if (closeModalBtn) {
     closeModalBtn.addEventListener('click', closeModal);
   }
 
   modalOverlay.addEventListener('click', (e) => {
-    if (e.target === modalOverlay) {
-      closeModal();
-    }
+    if (e.target === modalOverlay) closeModal();
   });
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+    if (!isOpen()) return;
+
+    if (e.key === 'Escape') {
       closeModal();
+      return;
+    }
+
+    if (e.key !== 'Tab') return;
+
+    const focusable = [...modalOverlay.querySelectorAll(FOCUSABLE)];
+    if (focusable.length === 0) return;
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
     }
   });
 
   if (bookingForm) {
     bookingForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const nameInput = document.getElementById('clientName');
-      const emailInput = document.getElementById('clientEmail');
 
-      if (!nameInput || !emailInput || !nameInput.value || !emailInput.value) {
-        alert('Please fill in all required fields.');
-        return;
-      }
+      const name = bookingForm.querySelector('#clientName');
+      if (!name) return;
 
-      bookingForm.innerHTML = `
-        <div class="text-center" style="padding: 2rem 1rem;">
-          <div style="width: 64px; height: 64px; background: var(--gradient-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem auto; color: #fff;">
-            <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-            </svg>
-          </div>
-          <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Consultation Requested!</h3>
-          <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Thank you ${nameInput.value}! Coach will review your fitness profile and reach out within 24 hours.</p>
-          <button class="btn btn-primary" onclick="document.getElementById('consultationModal').classList.remove('active'); document.body.style.overflow = '';">Close Window</button>
-        </div>
-      `;
+      showFormSuccess(bookingForm, {
+        title: 'Consultation requested',
+        message: `Thanks ${name.value.trim()} — Coach Elena will review your fitness profile and reach out within 24 hours.`,
+        actionLabel: 'Close window',
+        onAction: closeModal
+      });
     });
   }
 }

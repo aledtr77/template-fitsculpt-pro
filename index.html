@@ -3,20 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FitSculpt Luxe | Elite Female Body Sculpting & Bio-Individual Coaching</title>
+  <title>FitSculpt Luxe | Elite Female Body Sculpting &amp; Bio-Individual Coaching</title>
   <meta name="description" content="Sculpt a lean, powerful female physique with elite 1-on-1 coaching, custom bio-individual nutrition, and science-backed body sculpting by Master Coach Elena Vance.">
-  <meta name="keywords" content="female fitness coach, body sculpting, elite personal trainer, women workout plan, bio-individual nutrition">
-  
-  <!-- Open Graph / Social Media -->
+  <meta name="theme-color" content="#0e1219">
+
+  <!-- Open Graph / Social Media.
+       og:image must be an absolute URL — replace the origin before publishing. -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="FitSculpt Luxe - Elite Female Physique Transformation">
   <meta property="og:description" content="Custom workout protocols and bio-individual nutrition engineered exclusively for ambitious women.">
-  <meta property="og:image" content="./src/assets/images/hero-model.png">
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f97316' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>">
+  <meta property="og:image" content="https://example.com/src/assets/images/hero-model.png">
+  <meta property="og:url" content="https://example.com/">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <!-- Fonts are linked, not @imported: an @import inside the stylesheet cannot
+       start downloading until the CSS itself has parsed, adding a round trip. -->
+  <link rel="stylesheet" href="./src/styles/main.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+
+  <script>
+    // Applied before first paint so a stored light theme does not flash dark.
+    // Inline and blocking on purpose — a deferred module runs too late.
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        var theme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
 </head>
 <body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
 
   <!-- Backdrop for Mobile Drawer -->
   <div class="nav-backdrop" id="navBackdrop"></div>
@@ -25,13 +51,13 @@
   <header class="site-header" id="siteHeader">
     <div class="container header-container">
       <a href="index.html" class="brand-logo" id="brandLogo">
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M6 5v14M18 5v14M3 8v8M21 8v8M9 12h6"/>
         </svg>
-        <span>FIT<span class="text-gradient">SCULPT</span> <span style="font-size: 0.75rem; vertical-align: top; border: 1px solid var(--border-accent); padding: 0.15rem 0.45rem; border-radius: var(--radius-sm); color: var(--accent-primary);">LUXE</span></span>
+        <span>FIT<span class="text-gradient">SCULPT</span> <span class="brand-badge">LUXE</span></span>
       </a>
 
-      <nav class="nav-menu" id="navMenu">
+      <nav class="nav-menu" id="navMenu" aria-label="Main">
         <a href="#hero" class="nav-link active">Home</a>
         <a href="#about" class="nav-link">About Coach</a>
         <a href="#calculator" class="nav-link">Metrics Calc</a>
@@ -42,45 +68,45 @@
       </nav>
 
       <div class="header-actions">
-        <button class="theme-toggle" id="themeToggleBtn" aria-label="Toggle Theme">
-          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <button type="button" class="theme-toggle" id="themeToggleBtn" aria-label="Switch theme">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
           </svg>
         </button>
-        <button class="btn btn-primary" data-open-modal="true" id="headerCtaBtn">Claim Free Call</button>
-        <div class="mobile-toggle" id="mobileToggle" aria-label="Toggle Mobile Menu">
+        <button type="button" class="btn btn-primary" data-open-modal id="headerCtaBtn">Claim Free Call</button>
+        <button type="button" class="mobile-toggle" id="mobileToggle" aria-label="Menu" aria-expanded="false" aria-controls="navMenu">
           <span></span>
           <span></span>
           <span></span>
-        </div>
+        </button>
       </div>
     </div>
   </header>
 
   <!-- Main Content -->
-  <main>
+  <main id="main">
     <!-- Hero Section -->
     <section class="hero-section" id="hero">
       <div class="container">
         <div class="hero-grid">
           <div class="hero-content">
-            <div class="section-tag">
-              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <p class="section-tag">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
               #1 Elite Female Physique Transformation System
-            </div>
-            <h1>Sculpt A Lean, Defined & <span class="text-gradient">Powerful Physique</span></h1>
-            <p>Stop guessing. Achieve a lean, sculpted female physique with 1-on-1 expert coaching, custom bio-individual nutrition, and science-backed strength protocols built for sustainable results.</p>
-            
+            </p>
+            <h1>Sculpt A Lean, Defined&nbsp;&amp; <span class="text-gradient">Powerful Physique</span></h1>
+            <p class="hero-lede">Stop guessing. Achieve a lean, sculpted female physique with 1-on-1 expert coaching, custom bio-individual nutrition, and science-backed strength protocols built for sustainable results.</p>
+
             <div class="hero-actions">
-              <button class="btn btn-primary btn-lg" data-open-modal="true" id="heroPrimaryCta">Claim Strategy Session</button>
+              <button type="button" class="btn btn-primary btn-lg" data-open-modal id="heroPrimaryCta">Claim Strategy Session</button>
               <a href="#programs" class="btn btn-secondary btn-lg" id="heroSecondaryCta">Explore Protocols</a>
             </div>
 
             <div class="hero-trust-badges">
               <div class="avatars-group">
-                <img src="./src/assets/images/result-1.png" alt="Client 1" class="avatar-img">
-                <img src="./src/assets/images/result-2.png" alt="Client 2" class="avatar-img">
-                <img src="./src/assets/images/result-3.png" alt="Client 3" class="avatar-img">
+                <img src="./src/assets/images/result-1-avatar.webp" alt="" width="44" height="44" class="avatar-img" decoding="async">
+                <img src="./src/assets/images/result-2-avatar.webp" alt="" width="44" height="44" class="avatar-img" decoding="async">
+                <img src="./src/assets/images/result-3-avatar.webp" alt="" width="44" height="44" class="avatar-img" decoding="async">
               </div>
               <div class="trust-text">
                 <p>Over 1,200+ Women Transformed</p>
@@ -91,17 +117,20 @@
 
           <div class="hero-visual">
             <div class="hero-image-wrapper">
-              <img src="./src/assets/images/hero-model.png" alt="FitSculpt Luxe Elite Female Model Athlete">
+              <picture>
+                <source srcset="./src/assets/images/hero-model.webp" type="image/webp">
+                <img src="./src/assets/images/hero-model.png" alt="Coach Elena Vance in a training stance" width="1024" height="1024" fetchpriority="high" decoding="async">
+              </picture>
             </div>
             <div class="hero-floating-badge">
               <div class="floating-icon">
-                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                 </svg>
               </div>
               <div class="floating-info">
-                <h4>98% Success Rate</h4>
-                <p>Proven Fat Reduction & Lean Muscle</p>
+                <p class="floating-title">98% Success Rate</p>
+                <p class="floating-sub">Proven Fat Reduction &amp; Lean Muscle</p>
               </div>
             </div>
           </div>
@@ -110,24 +139,24 @@
     </section>
 
     <!-- Stats Banner -->
-    <section class="stats-section">
+    <section class="stats-section" aria-label="Coaching results at a glance">
       <div class="container">
         <div class="stats-grid">
           <div class="stat-item">
-            <h3>1,200+</h3>
-            <p>Active Clients</p>
+            <p class="stat-value">1,200+</p>
+            <p class="stat-label">Active Clients</p>
           </div>
           <div class="stat-item">
-            <h3 class="text-gradient">12+ Yrs</h3>
-            <p>Coaching Experience</p>
+            <p class="stat-value text-gradient">12+ Yrs</p>
+            <p class="stat-label">Coaching Experience</p>
           </div>
           <div class="stat-item">
-            <h3>95%</h3>
-            <p>Client Retention</p>
+            <p class="stat-value">95%</p>
+            <p class="stat-label">Client Retention</p>
           </div>
           <div class="stat-item">
-            <h3 class="text-gradient">500k+</h3>
-            <p>Pounds Lost</p>
+            <p class="stat-value text-gradient">500k+</p>
+            <p class="stat-label">Pounds Lost</p>
           </div>
         </div>
       </div>
@@ -138,49 +167,52 @@
       <div class="container">
         <div class="about-grid">
           <div class="about-image-card">
-            <img src="./src/assets/images/coach-elena.png" alt="Coach Elena Vance">
+            <picture>
+              <source srcset="./src/assets/images/coach-elena.webp" type="image/webp">
+              <img src="./src/assets/images/coach-elena.png" alt="Coach Elena Vance" width="1024" height="1024" loading="lazy" decoding="async">
+            </picture>
           </div>
           <div class="about-content">
-            <div class="section-tag">Meet Your Coach</div>
+            <p class="section-tag">Meet Your Coach</p>
             <h2>Hi, I'm <span class="text-gradient">Elena Vance</span></h2>
-            <p style="color: var(--text-secondary); margin-top: 1rem; font-size: 1.05rem;">
+            <p class="lede">
               With over a decade of experience in female sports science and body composition optimization, I specialize in helping busy women drop body fat, tone lean muscle, and build unbreakable self-confidence without restrictive starvation diets.
             </p>
 
             <div class="about-features">
               <div class="feature-box">
-                <h4>Customized to You</h4>
+                <h3>Customized to You</h3>
                 <p>No cookie-cutter routines. Every plan is built specifically for your metabolism, schedule, and goals.</p>
               </div>
               <div class="feature-box">
-                <h4>Hormone-Smart Training</h4>
+                <h3>Hormone-Smart Training</h3>
                 <p>Workouts engineered around female hormonal cycles for optimal fat loss and energy.</p>
               </div>
               <div class="feature-box">
-                <h4>Flexible Nutrition</h4>
+                <h3>Flexible Nutrition</h3>
                 <p>Eat the foods you love while reaching your daily macro targets effortlessly.</p>
               </div>
               <div class="feature-box">
-                <h4>24/7 VIP Support</h4>
+                <h3>24/7 VIP Support</h3>
                 <p>Direct weekly check-ins and WhatsApp messaging for continuous accountability.</p>
               </div>
             </div>
 
-            <div style="margin-top: 2rem;">
-              <button class="btn btn-primary" data-open-modal="true" id="aboutCtaBtn">Book Your Free Strategy Session</button>
-            </div>
+            <p class="about-cta">
+              <button type="button" class="btn btn-primary" data-open-modal id="aboutCtaBtn">Book Your Free Strategy Session</button>
+            </p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Interactive BMI & Calorie Calculator -->
-    <section class="section" id="calculator" style="background: var(--bg-primary);">
+    <section class="section" id="calculator">
       <div class="container">
         <div class="text-center">
-          <div class="section-tag">Interactive Fitness Tool</div>
-          <h2>Calculate Your <span class="text-gradient">Body Metrics & Calorie Needs</span></h2>
-          <p style="color: var(--text-secondary); max-width: 600px; margin: 0.5rem auto 0 auto;">
+          <p class="section-tag">Interactive Fitness Tool</p>
+          <h2>Calculate Your <span class="text-gradient">Body Metrics &amp; Calorie Needs</span></h2>
+          <p class="section-lede">
             Get an instant estimate of your BMI category and daily caloric intake needed to reach your dream physique.
           </p>
         </div>
@@ -191,15 +223,15 @@
               <div class="calc-inputs">
                 <div class="form-group">
                   <label class="form-label" for="calcHeight">Height (cm)</label>
-                  <input type="number" id="calcHeight" class="form-input" placeholder="e.g. 168" value="165" required>
+                  <input type="number" id="calcHeight" class="form-input" placeholder="e.g. 168" value="165" min="80" max="250" step="0.1" required>
                 </div>
                 <div class="form-group">
                   <label class="form-label" for="calcWeight">Weight (kg)</label>
-                  <input type="number" id="calcWeight" class="form-input" placeholder="e.g. 62" value="62" required>
+                  <input type="number" id="calcWeight" class="form-input" placeholder="e.g. 62" value="62" min="25" max="350" step="0.1" required>
                 </div>
                 <div class="form-group">
                   <label class="form-label" for="calcAge">Age (Years)</label>
-                  <input type="number" id="calcAge" class="form-input" placeholder="e.g. 28" value="28">
+                  <input type="number" id="calcAge" class="form-input" placeholder="e.g. 28" value="28" min="14" max="100" step="1">
                 </div>
                 <div class="form-group">
                   <label class="form-label" for="calcActivity">Activity Level</label>
@@ -211,18 +243,17 @@
                   </select>
                 </div>
               </div>
-              <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;" id="calcSubmitBtn">Calculate Now</button>
+              <button type="submit" class="btn btn-primary btn-block" id="calcSubmitBtn">Calculate Now</button>
             </form>
 
-            <div class="calc-result-box">
-              <span style="font-size: 0.85rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Your Calculated BMI</span>
-              <div class="calc-score" id="bmiScore">22.8</div>
-              <div class="calc-category" id="bmiCategory">Normal Weight (Optimal Fit)</div>
-              <div style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary);" id="macroCalories">1,850 kcal/day Target</div>
-              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem;">
-                Want a personalized meal plan based on this target?
-              </p>
-              <button class="btn btn-secondary btn-sm" data-open-modal="true" style="margin-top: 0.75rem;" id="calcModalTrigger">Get Custom Macro Plan</button>
+            <!-- aria-live so the recalculated result is announced, not just repainted -->
+            <div class="calc-result-box" aria-live="polite">
+              <p class="calc-label">Your Calculated BMI</p>
+              <p class="calc-score" id="bmiScore">22.8</p>
+              <p class="calc-category" id="bmiCategory">Normal Weight (Sculpt &amp; Maintain)</p>
+              <p class="calc-calories" id="macroCalories">1,850 kcal/day Target</p>
+              <p class="calc-note">Want a personalized meal plan based on this target?</p>
+              <button type="button" class="btn btn-secondary btn-sm" data-open-modal id="calcModalTrigger">Get Custom Macro Plan</button>
             </div>
           </div>
         </div>
@@ -233,125 +264,134 @@
     <section class="section" id="programs">
       <div class="container">
         <div class="text-center">
-          <div class="section-tag">Coaching Packages</div>
+          <p class="section-tag">Coaching Packages</p>
           <h2>Designed For Your <span class="text-gradient">Specific Fitness Goals</span></h2>
-          <p style="color: var(--text-secondary); max-width: 580px; margin: 0.5rem auto 2.5rem auto;">
+          <p class="section-lede">
             Choose from our specialized programs crafted to sculpt muscle, torch fat, or provide complete 1-on-1 mentorship.
           </p>
 
-          <div class="programs-tabs">
-            <button class="tab-btn active" data-filter="all">All Programs</button>
-            <button class="tab-btn" data-filter="sculpt">Body Sculpting</button>
-            <button class="tab-btn" data-filter="hiit">Fat Loss & HIIT</button>
-            <button class="tab-btn" data-filter="vip">1-on-1 Coaching</button>
+          <div class="programs-tabs" role="group" aria-label="Filter programs by type">
+            <button type="button" class="tab-btn" data-filter="all" aria-pressed="true">All Programs</button>
+            <button type="button" class="tab-btn" data-filter="sculpt" aria-pressed="false">Body Sculpting</button>
+            <button type="button" class="tab-btn" data-filter="hiit" aria-pressed="false">Fat Loss &amp; HIIT</button>
+            <button type="button" class="tab-btn" data-filter="vip" aria-pressed="false">1-on-1 Coaching</button>
           </div>
         </div>
 
         <div class="programs-grid">
           <!-- Program 1 -->
-          <div class="program-card" data-category="sculpt">
-            <img src="./src/assets/images/result-1.png" alt="Sculpt & Tone" class="program-img">
+          <article class="program-card" data-category="sculpt">
+            <picture>
+              <source srcset="./src/assets/images/result-1.webp" type="image/webp">
+              <img src="./src/assets/images/result-1.png" alt="" width="1024" height="1024" class="program-img" loading="lazy" decoding="async">
+            </picture>
             <div class="program-body">
               <span class="program-badge">Body Sculpting</span>
-              <h3>Sculpt & Tone Protocol</h3>
+              <h3>Sculpt &amp; Tone Protocol</h3>
               <p>Build lean hourglass muscle definition, firm up glutes and core, and elevate your posture with progressive resistance training.</p>
               <div class="program-meta">
                 <span>Duration: 12 Weeks</span>
-                <a href="#" class="btn btn-secondary btn-sm" data-open-modal="true">Learn More</a>
+                <button type="button" class="btn btn-secondary btn-sm" data-open-modal>Learn More</button>
               </div>
             </div>
-          </div>
+          </article>
 
           <!-- Program 2 -->
-          <div class="program-card" data-category="hiit">
-            <img src="./src/assets/images/result-2.png" alt="Fat Loss & HIIT" class="program-img">
+          <article class="program-card" data-category="hiit">
+            <picture>
+              <source srcset="./src/assets/images/result-2.webp" type="image/webp">
+              <img src="./src/assets/images/result-2.png" alt="" width="1024" height="1024" class="program-img" loading="lazy" decoding="async">
+            </picture>
             <div class="program-body">
               <span class="program-badge">Fat Loss</span>
               <h3>Metabolic HIIT Burn</h3>
               <p>High-energy, time-efficient cardio and strength circuits designed to maximize post-workout calorie burn and speed up metabolic rate.</p>
               <div class="program-meta">
                 <span>Duration: 8 Weeks</span>
-                <a href="#" class="btn btn-secondary btn-sm" data-open-modal="true">Learn More</a>
+                <button type="button" class="btn btn-secondary btn-sm" data-open-modal>Learn More</button>
               </div>
             </div>
-          </div>
+          </article>
 
           <!-- Program 3 -->
-          <div class="program-card" data-category="vip">
-            <img src="./src/assets/images/result-3.png" alt="1-on-1 VIP Coaching" class="program-img">
+          <article class="program-card" data-category="vip">
+            <picture>
+              <source srcset="./src/assets/images/result-3.webp" type="image/webp">
+              <img src="./src/assets/images/result-3.png" alt="" width="1024" height="1024" class="program-img" loading="lazy" decoding="async">
+            </picture>
             <div class="program-body">
               <span class="program-badge">VIP Coaching</span>
               <h3>1-on-1 VIP Transformation</h3>
               <p>Full 360-degree personal mentorship with custom workouts, tailored macro menu, weekly video check-ins, and direct WhatsApp access.</p>
               <div class="program-meta">
                 <span>Duration: 16 Weeks</span>
-                <a href="#" class="btn btn-primary btn-sm" data-open-modal="true">Apply Now</a>
+                <button type="button" class="btn btn-primary btn-sm" data-open-modal>Apply Now</button>
               </div>
             </div>
-          </div>
+          </article>
         </div>
       </div>
     </section>
 
     <!-- Transformations & Client Success Stories -->
-    <section class="section" id="transformations" style="background: var(--bg-secondary);">
+    <section class="section section-alt" id="transformations">
       <div class="container">
         <div class="text-center">
-          <div class="section-tag">Real Client Results</div>
+          <p class="section-tag">Real Client Results</p>
           <h2>Proof In <span class="text-gradient">Real Transformations</span></h2>
-          <p style="color: var(--text-secondary); max-width: 580px; margin: 0.5rem auto 3rem auto;">
+          <p class="section-lede">
             See how everyday women achieved extraordinary body transformations with FitSculpt coaching.
           </p>
         </div>
 
         <div class="transformations-grid">
           <!-- Client 1 -->
-          <div class="transformation-card">
+          <figure class="transformation-card">
             <div class="client-header">
-              <img src="./src/assets/images/result-1.png" alt="Chiara S." class="client-avatar">
-              <div class="client-name">
-                <h4>Chiara S.</h4>
-                <span>★★★★★ Verified Client</span>
-              </div>
+              <img src="./src/assets/images/result-1-avatar.webp" alt="" width="56" height="56" class="client-avatar" loading="lazy" decoding="async">
+              <figcaption class="client-name">
+                <h3>Chiara S.</h3>
+                <span><span aria-hidden="true">★★★★★</span><span class="visually-hidden">Rated 5 out of 5.</span> Verified Client</span>
+              </figcaption>
             </div>
-            <p class="quote-text">"Working with Coach Elena completely changed my relationship with fitness. I lost 14 kg in 4 months and feel stronger than ever!"</p>
+            <blockquote class="quote-text">Working with Coach Elena completely changed my relationship with fitness. I lost 14 kg in 4 months and feel stronger than ever!</blockquote>
             <div class="client-metrics">
-              <span style="color: var(--accent-primary);">-14 kg Fat Lost</span>
-              <span style="color: var(--text-secondary);">• 16 Weeks</span>
+              <span class="metric-primary">-14 kg Fat Lost</span>
+              <span class="metric-secondary">16 Weeks</span>
             </div>
-          </div>
+          </figure>
 
           <!-- Client 2 -->
-          <div class="transformation-card">
+          <figure class="transformation-card">
             <div class="client-header">
-              <img src="./src/assets/images/result-2.png" alt="Elisa M." class="client-avatar">
-              <div class="client-name">
-                <h4>Elisa M.</h4>
-                <span>★★★★★ Verified Client</span>
-              </div>
+              <img src="./src/assets/images/result-2-avatar.webp" alt="" width="56" height="56" class="client-avatar" loading="lazy" decoding="async">
+              <figcaption class="client-name">
+                <h3>Elisa M.</h3>
+                <span><span aria-hidden="true">★★★★★</span><span class="visually-hidden">Rated 5 out of 5.</span> Verified Client</span>
+              </figcaption>
             </div>
-            <p class="quote-text">"I used to do hours of random cardio with no results. Elena's structured weight lifting plan gave me defined abs and glute tone in 12 weeks!"</p>
+            <blockquote class="quote-text">I used to do hours of random cardio with no results. Elena's structured weight lifting plan gave me defined abs and glute tone in 12 weeks!</blockquote>
             <div class="client-metrics">
-              <span style="color: var(--accent-primary);">Glute Tone & Lean Waist</span>
-              <span style="color: var(--text-secondary);">• 12 Weeks</span>
+              <span class="metric-primary">Glute Tone &amp; Lean Waist</span>
+              <span class="metric-secondary">12 Weeks</span>
             </div>
-          </div>
+          </figure>
 
           <!-- Client 3 -->
-          <div class="transformation-card">
+          <figure class="transformation-card">
             <div class="client-header">
-              <img src="./src/assets/images/result-3.png" alt="Marta R." class="client-avatar">
-              <div class="client-name">
-                <h4>Marta R.</h4>
-                <span>★★★★★ Verified Client</span>
-              </div>
+              <img src="./src/assets/images/result-3-avatar.webp" alt="" width="56" height="56" class="client-avatar" loading="lazy" decoding="async">
+              <figcaption class="client-name">
+                <h3>Marta R.</h3>
+                <span><span aria-hidden="true">★★★★★</span><span class="visually-hidden">Rated 5 out of 5.</span> Verified Client</span>
+              </figcaption>
             </div>
-            <p class="quote-text">"The flexible nutrition plan allowed me to enjoy weekend dinners out while still dropping 2 dress sizes. Absolutely recommended!"</p>
+            <blockquote class="quote-text">The flexible nutrition plan allowed me to enjoy weekend dinners out while still dropping 2 dress sizes. Absolutely recommended!</blockquote>
             <div class="client-metrics">
-              <span style="color: var(--accent-primary);">-2 Dress Sizes</span>
-              <span style="color: var(--text-secondary);">• 10 Weeks</span>
+              <span class="metric-primary">-2 Dress Sizes</span>
+              <span class="metric-secondary">10 Weeks</span>
             </div>
-          </div>
+          </figure>
         </div>
       </div>
     </section>
@@ -360,18 +400,18 @@
     <section class="section" id="pricing">
       <div class="container">
         <div class="text-center">
-          <div class="section-tag">Flexible Membership</div>
-          <h2>Invest In Your <span class="text-gradient">Health & Confidence</span></h2>
-          <p style="color: var(--text-secondary); max-width: 540px; margin: 0.5rem auto 2rem auto;">
+          <p class="section-tag">Flexible Membership</p>
+          <h2>Invest In Your <span class="text-gradient">Health &amp; Confidence</span></h2>
+          <p class="section-lede">
             Transparent pricing packages tailored to your level of guidance and support needs.
           </p>
 
           <div class="pricing-toggle">
-            <span style="font-weight: 700;">Monthly Billing</span>
-            <div class="toggle-switch" id="pricingToggle">
-              <div class="toggle-ball"></div>
-            </div>
-            <span style="font-weight: 700;">Annual Billing <span style="color: var(--accent-gold); font-size: 0.85rem;">(Save 20%)</span></span>
+            <span class="billing-label active">Monthly Billing</span>
+            <button type="button" class="toggle-switch" id="pricingToggle" role="switch" aria-checked="false" aria-label="Bill annually and save 20%">
+              <span class="toggle-ball"></span>
+            </button>
+            <span class="billing-label">Annual Billing <span class="billing-save">(Save 20%)</span></span>
           </div>
         </div>
 
@@ -379,124 +419,141 @@
           <!-- Starter -->
           <div class="pricing-card">
             <h3>Starter Fit</h3>
-            <p style="color: var(--text-muted); font-size: 0.85rem;">Great for self-motivated women</p>
-            <div class="price-box">
+            <p class="pricing-blurb">Great for self-motivated women</p>
+            <p class="price-box">
               <span class="price-amount" data-monthly="$49" data-yearly="$39">$49</span>
               <span class="price-period">/month</span>
-            </div>
+            </p>
             <ul class="pricing-features">
-              <li><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Monthly Custom Workout Routine</li>
-              <li><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Macro Nutrition Guidelines</li>
-              <li><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Access to FitSculpt Video Vault</li>
-              <li><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Community Group Chat</li>
+              <li><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Monthly Custom Workout Routine</li>
+              <li><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Macro Nutrition Guidelines</li>
+              <li><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Access to FitSculpt Video Vault</li>
+              <li><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Community Group Chat</li>
             </ul>
-            <button class="btn btn-secondary" data-open-modal="true" id="pricingStarterBtn">Select Starter</button>
+            <button type="button" class="btn btn-secondary" data-open-modal id="pricingStarterBtn">Select Starter</button>
           </div>
 
           <!-- Featured Pro -->
           <div class="pricing-card featured">
-            <div class="featured-tag">Most Popular</div>
+            <p class="featured-tag">Most Popular</p>
             <h3>Sculpt Pro</h3>
-            <p style="color: var(--text-muted); font-size: 0.85rem;">Best for rapid body transformation</p>
-            <div class="price-box">
+            <p class="pricing-blurb">Best for rapid body transformation</p>
+            <p class="price-box">
               <span class="price-amount text-gradient" data-monthly="$99" data-yearly="$79">$99</span>
               <span class="price-period">/month</span>
-            </div>
+            </p>
             <ul class="pricing-features">
-              <li><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Personalized Workout Program</li>
-              <li><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Custom Meal Plan & Recipe Book</li>
-              <li><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Bi-Weekly Progress Adjustments</li>
-              <li><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Direct Email & App Support</li>
+              <li><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Personalized Workout Program</li>
+              <li><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Custom Meal Plan &amp; Recipe Book</li>
+              <li><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Bi-Weekly Progress Adjustments</li>
+              <li><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Direct Email &amp; App Support</li>
             </ul>
-            <button class="btn btn-primary" data-open-modal="true" id="pricingProBtn">Get Sculpt Pro</button>
+            <button type="button" class="btn btn-primary" data-open-modal id="pricingProBtn">Get Sculpt Pro</button>
           </div>
 
           <!-- VIP Elite -->
           <div class="pricing-card">
             <h3>VIP Mentorship</h3>
-            <p style="color: var(--text-muted); font-size: 0.85rem;">Complete 1-on-1 private coaching</p>
-            <div class="price-box">
+            <p class="pricing-blurb">Complete 1-on-1 private coaching</p>
+            <p class="price-box">
               <span class="price-amount text-gradient-gold" data-monthly="$199" data-yearly="$159">$199</span>
               <span class="price-period">/month</span>
-            </div>
+            </p>
             <ul class="pricing-features">
-              <li><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Everything in Sculpt Pro</li>
-              <li><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Weekly 1-on-1 Video Consultation</li>
-              <li><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Priority WhatsApp Messaging</li>
-              <li><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Custom Supplementation Protocol</li>
+              <li><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Everything in Sculpt Pro</li>
+              <li><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Weekly 1-on-1 Video Consultation</li>
+              <li><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Priority WhatsApp Messaging</li>
+              <li><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Custom Supplementation Protocol</li>
             </ul>
-            <button class="btn btn-gold" data-open-modal="true" id="pricingVipBtn">Apply For VIP</button>
+            <button type="button" class="btn btn-gold" data-open-modal id="pricingVipBtn">Apply For VIP</button>
           </div>
         </div>
       </div>
     </section>
 
     <!-- FAQ Accordion -->
-    <section class="section" id="faq" style="background: var(--bg-secondary);">
-      <div class="container" style="max-width: 800px;">
+    <section class="section section-alt" id="faq">
+      <div class="container container-narrow">
         <div class="text-center">
-          <div class="section-tag">Got Questions?</div>
+          <p class="section-tag">Got Questions?</p>
           <h2>Frequently Asked <span class="text-gradient">Questions</span></h2>
-          <p style="color: var(--text-secondary); margin: 0.5rem 0 3rem 0;">
+          <p class="section-lede">
             Everything you need to know about starting your fitness coaching journey.
           </p>
         </div>
 
         <div class="accordion">
           <div class="accordion-item active">
-            <div class="accordion-header">
-              <span>Do I need access to a commercial gym?</span>
-              <div class="accordion-icon">▼</div>
-            </div>
-            <div class="accordion-body">
-              <p>No! Programs are fully customized to your equipment setup. Whether you train at a commercial gym or at home with dumbbells, we tailor your plan accordingly.</p>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <div class="accordion-header">
-              <span>How are my workouts updated as I progress?</span>
-              <div class="accordion-icon">▼</div>
-            </div>
-            <div class="accordion-body">
-              <p>During bi-weekly or weekly check-ins, we analyze your biofeedback, weight logs, and progress pictures to make continuous adjustments to your training volume and macros.</p>
+            <h3>
+              <button type="button" class="accordion-header" aria-expanded="true" aria-controls="faq-1">
+                <span>Do I need access to a commercial gym?</span>
+                <span class="accordion-icon" aria-hidden="true">
+                  <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 9l6 6 6-6"/></svg>
+                </span>
+              </button>
+            </h3>
+            <div class="accordion-body" id="faq-1" role="region">
+              <div><p>No! Programs are fully customized to your equipment setup. Whether you train at a commercial gym or at home with dumbbells, we tailor your plan accordingly.</p></div>
             </div>
           </div>
 
           <div class="accordion-item">
-            <div class="accordion-header">
-              <span>Will lifting weights make me bulky?</span>
-              <div class="accordion-icon">▼</div>
-            </div>
-            <div class="accordion-body">
-              <p>Absolutely not! Females have a fraction of the testosterone required to build excessive bulk. Progressive weight training creates the toned, firm, hourglass shape most women desire.</p>
+            <h3>
+              <button type="button" class="accordion-header" aria-expanded="false" aria-controls="faq-2">
+                <span>How are my workouts updated as I progress?</span>
+                <span class="accordion-icon" aria-hidden="true">
+                  <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 9l6 6 6-6"/></svg>
+                </span>
+              </button>
+            </h3>
+            <div class="accordion-body" id="faq-2" role="region">
+              <div><p>During bi-weekly or weekly check-ins, we analyze your biofeedback, weight logs, and progress pictures to make continuous adjustments to your training volume and macros.</p></div>
             </div>
           </div>
 
           <div class="accordion-item">
-            <div class="accordion-header">
-              <span>How soon can I expect visible results?</span>
-              <div class="accordion-icon">▼</div>
+            <h3>
+              <button type="button" class="accordion-header" aria-expanded="false" aria-controls="faq-3">
+                <span>Will lifting weights make me bulky?</span>
+                <span class="accordion-icon" aria-hidden="true">
+                  <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 9l6 6 6-6"/></svg>
+                </span>
+              </button>
+            </h3>
+            <div class="accordion-body" id="faq-3" role="region">
+              <div><p>Absolutely not! Females have a fraction of the testosterone required to build excessive bulk. Progressive weight training creates the toned, firm, hourglass shape most women desire.</p></div>
             </div>
-            <div class="accordion-body">
-              <p>Most clients notice increased energy and initial body composition changes within 14 days, with significant physical transformations occurring between weeks 8 and 12.</p>
+          </div>
+
+          <div class="accordion-item">
+            <h3>
+              <button type="button" class="accordion-header" aria-expanded="false" aria-controls="faq-4">
+                <span>How soon can I expect visible results?</span>
+                <span class="accordion-icon" aria-hidden="true">
+                  <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 9l6 6 6-6"/></svg>
+                </span>
+              </button>
+            </h3>
+            <div class="accordion-body" id="faq-4" role="region">
+              <div><p>Most clients notice increased energy and initial body composition changes within 14 days, with significant physical transformations occurring between weeks 8 and 12.</p></div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Lead Magnet Etsy Promotion Banner -->
-    <section class="container">
-      <div class="etsy-promo-banner">
-        <div class="etsy-promo-content">
-          <div class="etsy-badge">🔥 Commercial Website Template Available</div>
-          <h3>Want To Use This Template For Your Fitness Business?</h3>
-          <p>Download the complete multi-page source code, Figma design files, commercial license, and setup documentation on our official Etsy Store!</p>
+    <!-- Template Promotion Banner -->
+    <section class="container" aria-label="Template licensing">
+      <div class="promo-banner">
+        <div class="promo-content">
+          <p class="promo-badge">Commercial Website Template Available</p>
+          <h2>Want To Use This Template For Your Fitness Business?</h2>
+          <p class="promo-text">Download the complete multi-page source code, Figma design files, commercial license, and setup documentation on our Codedge template store.</p>
         </div>
-        <a href="https://etsy.com" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-lg" id="etsyBannerBtn">
-          Shop On Etsy
-          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        <a href="https://codedge.it/templates/" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-lg" id="promoBannerBtn">
+          Browse The Templates
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          <span class="visually-hidden">(opens in a new tab)</span>
         </a>
       </div>
     </section>
@@ -504,33 +561,33 @@
 
   <!-- Consultation Booking Modal Overlay -->
   <div class="modal-overlay" id="consultationModal">
-    <div class="modal-container">
-      <button class="modal-close" id="closeModalBtn" aria-label="Close Modal">&times;</button>
-      <div class="text-center" style="margin-bottom: 1.5rem;">
-        <span class="section-tag">Free Strategy Session</span>
-        <h3 style="font-size: 1.6rem; margin-top: 0.5rem;">Book Your Free Coaching Call</h3>
-        <p style="color: var(--text-secondary); font-size: 0.9rem;">Fill in your details below and Coach Elena will get in touch to plan your transformation.</p>
+    <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="consultationModalTitle">
+      <button type="button" class="modal-close" id="closeModalBtn" aria-label="Close dialog">&times;</button>
+      <div class="text-center modal-intro">
+        <p class="section-tag">Free Strategy Session</p>
+        <h2 id="consultationModalTitle">Book Your Free Coaching Call</h2>
+        <p>Fill in your details below and Coach Elena will get in touch to plan your transformation.</p>
       </div>
 
       <form id="bookingForm">
         <div class="form-group">
           <label class="form-label" for="clientName">Full Name</label>
-          <input type="text" id="clientName" class="form-input" placeholder="e.g. Sarah Jenkins" required>
+          <input type="text" id="clientName" name="name" class="form-input" placeholder="e.g. Sarah Jenkins" autocomplete="name" required>
         </div>
         <div class="form-group">
           <label class="form-label" for="clientEmail">Email Address</label>
-          <input type="email" id="clientEmail" class="form-input" placeholder="e.g. sarah@example.com" required>
+          <input type="email" id="clientEmail" name="email" class="form-input" placeholder="e.g. sarah@example.com" autocomplete="email" required>
         </div>
         <div class="form-group">
           <label class="form-label" for="clientGoal">Primary Fitness Goal</label>
-          <select id="clientGoal" class="form-select">
-            <option value="fat-loss">Fat Loss & Muscle Toning</option>
-            <option value="glute-sculpting">Glute & Core Sculpting</option>
+          <select id="clientGoal" name="goal" class="form-select">
+            <option value="fat-loss">Fat Loss &amp; Muscle Toning</option>
+            <option value="glute-sculpting">Glute &amp; Core Sculpting</option>
             <option value="muscle-gain">Lean Muscle Building</option>
-            <option value="lifestyle">Overall Health & Vitality</option>
+            <option value="lifestyle">Overall Health &amp; Vitality</option>
           </select>
         </div>
-        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;" id="modalSubmitBtn">Submit Request</button>
+        <button type="submit" class="btn btn-primary btn-block" id="modalSubmitBtn">Submit Request</button>
       </form>
     </div>
   </div>
@@ -541,50 +598,73 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="index.html" class="brand-logo">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 5v14M18 5v14M3 8v8M21 8v8M9 12h6"/></svg>
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6 5v14M18 5v14M3 8v8M21 8v8M9 12h6"/>
+            </svg>
             <span>FIT<span class="text-gradient">SCULPT</span></span>
           </a>
           <p>Empowering women worldwide to build strength, confidence, and lifelong athletic fitness.</p>
+          <!-- Placeholder destinations: point these at the coach's real profiles. -->
           <div class="social-links">
-            <a href="#" class="social-icon" aria-label="Instagram">IG</a>
-            <a href="#" class="social-icon" aria-label="YouTube">YT</a>
-            <a href="#" class="social-icon" aria-label="TikTok">TK</a>
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="YouTube">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="5" width="20" height="14" rx="4"/>
+                <path d="M10.5 9.5l4.5 2.5-4.5 2.5z" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="TikTok">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/>
+                <path d="M14 3c.4 2.6 2 4.2 4.6 4.4"/>
+              </svg>
+            </a>
           </div>
         </div>
 
-        <div class="footer-column">
-          <h4>Navigation</h4>
+        <nav class="footer-column" aria-label="Navigation">
+          <h2>Navigation</h2>
           <div class="footer-links">
             <a href="#hero">Home</a>
             <a href="#about">About Coach</a>
             <a href="#calculator">BMI Calculator</a>
             <a href="#programs">Programs</a>
           </div>
-        </div>
+        </nav>
 
-        <div class="footer-column">
-          <h4>Programs</h4>
+        <nav class="footer-column" aria-label="Programs">
+          <h2>Programs</h2>
           <div class="footer-links">
-            <a href="#programs">Sculpt & Tone</a>
+            <a href="#programs">Sculpt &amp; Tone</a>
             <a href="#programs">Metabolic HIIT</a>
             <a href="#programs">1-on-1 VIP Mentorship</a>
             <a href="#pricing">Membership Plans</a>
           </div>
-        </div>
+        </nav>
 
-        <div class="footer-column">
-          <h4>Legal & Templates</h4>
+        <nav class="footer-column" aria-label="Legal and templates">
+          <h2>Legal &amp; Templates</h2>
           <div class="footer-links">
             <a href="pages/about.html">About Page</a>
             <a href="pages/programs.html">Programs Overview</a>
             <a href="pages/contact.html">Contact Us</a>
-            <a href="https://etsy.com" target="_blank" rel="noopener noreferrer" style="color: var(--accent-gold); font-weight: 700;">Get Etsy Commercial License →</a>
+            <a href="https://codedge.it/templates/" target="_blank" rel="noopener noreferrer" class="footer-link-accent">
+              Commercial Template Licence
+              <span aria-hidden="true">&rarr;</span>
+              <span class="visually-hidden">(opens in a new tab)</span>
+            </a>
           </div>
-        </div>
+        </nav>
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2026 FitSculpt Pro Template. All rights reserved. Created for high-converting fitness landing pages.</p>
+        <p>&copy; 2026 FitSculpt Pro Template. All rights reserved.</p>
         <p>Built with Vite &amp; Modern Vanilla CSS</p>
       </div>
     </div>

@@ -5,6 +5,66 @@
   position: relative;
 }
 
+/* Banded background used to separate adjacent sections */
+.section-alt {
+  background-color: var(--bg-secondary);
+}
+
+.container-narrow {
+  max-width: 800px;
+}
+
+/* Sub-pages start below the fixed header instead of under it */
+.page-main {
+  padding-top: calc(var(--header-height) + 3rem);
+}
+
+/* Standing text under a section heading */
+.section-lede {
+  color: var(--text-secondary);
+  max-width: 60ch;
+  margin: 0.5rem auto 3rem;
+}
+
+.lede {
+  color: var(--text-secondary);
+  margin-top: 1rem;
+  font-size: 1.05rem;
+}
+
+.lede + .lede {
+  margin-top: 1rem;
+}
+
+.about-cta {
+  margin-top: 2rem;
+}
+
+.btn-block {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+/* 404 */
+.error-page {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  padding: 4rem 0;
+}
+
+.error-code {
+  font-family: var(--font-heading);
+  font-size: clamp(5rem, 20vw, 9rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.error-page h1 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  margin-bottom: 1rem;
+}
+
 /* Header & Navigation */
 .site-header {
   position: fixed;
@@ -13,7 +73,8 @@
   right: 0;
   height: var(--header-height);
   z-index: 1000;
-  transition: background-color var(--transition-normal), backdrop-filter var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+  transition: background-color var(--transition-normal), backdrop-filter var(--transition-normal),
+              border-color var(--transition-normal), box-shadow var(--transition-normal);
 }
 
 .site-header.scrolled {
@@ -28,6 +89,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
   height: 100%;
 }
 
@@ -40,11 +102,24 @@
   font-weight: 800;
   color: var(--text-primary);
   letter-spacing: -0.03em;
+  flex-shrink: 0;
 }
 
 .brand-logo svg {
   width: 32px;
   height: 32px;
+  flex-shrink: 0;
+  color: var(--accent-primary);
+}
+
+.brand-badge {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  vertical-align: top;
+  border: 1px solid var(--border-accent);
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--radius-sm);
   color: var(--accent-primary);
 }
 
@@ -74,7 +149,7 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--gradient-accent);
+  background-image: var(--gradient-accent);
   transition: width var(--transition-fast);
   border-radius: var(--radius-full);
 }
@@ -93,22 +168,22 @@
 /* Mobile Navigation Backdrop & Drawer */
 .nav-backdrop {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background: rgba(7, 8, 12, 0.75);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   z-index: 998;
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transition: opacity var(--transition-normal);
+  transition: opacity var(--transition-normal), visibility 0s linear var(--transition-normal);
 }
 
 .nav-backdrop.active {
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
+  transition: opacity var(--transition-normal), visibility 0s;
 }
 
 /* Mobile Menu Toggle */
@@ -118,6 +193,7 @@
   justify-content: space-between;
   width: 28px;
   height: 20px;
+  padding: 0;
   cursor: pointer;
   z-index: 1001;
 }
@@ -131,15 +207,15 @@
   transition: transform var(--transition-fast), opacity var(--transition-fast);
 }
 
-.mobile-toggle.active span:nth-child(1) {
+.mobile-toggle[aria-expanded="true"] span:nth-child(1) {
   transform: translateY(9px) rotate(45deg);
 }
 
-.mobile-toggle.active span:nth-child(2) {
+.mobile-toggle[aria-expanded="true"] span:nth-child(2) {
   opacity: 0;
 }
 
-.mobile-toggle.active span:nth-child(3) {
+.mobile-toggle[aria-expanded="true"] span:nth-child(3) {
   transform: translateY(-9px) rotate(-45deg);
 }
 
@@ -181,19 +257,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
   color: var(--text-secondary);
-  transition: all var(--transition-fast);
+  transition: transform var(--transition-fast), color var(--transition-fast),
+              background-color var(--transition-fast), border-color var(--transition-fast),
+              box-shadow var(--transition-fast);
+}
+
+.social-icon svg {
+  width: 20px;
+  height: 20px;
 }
 
 .social-icon:hover {
-  background: var(--gradient-accent);
-  color: #ffffff;
+  background-image: var(--gradient-accent);
+  color: var(--accent-ink);
   border-color: transparent;
   transform: translateY(-3px);
-  box-shadow: var(--shadow-glow);
+  box-shadow: var(--shadow-accent);
 }
 
-.footer-column h4 {
+.footer-column h2 {
   font-size: 1.1rem;
   margin-bottom: 1.25rem;
   color: var(--text-primary);
@@ -208,10 +292,16 @@
 .footer-links a {
   color: var(--text-secondary);
   font-size: 0.9rem;
+  align-self: flex-start;
 }
 
 .footer-links a:hover {
   color: var(--accent-primary);
+}
+
+.footer-link-accent {
+  color: var(--accent-gold);
+  font-weight: 700;
 }
 
 .footer-bottom {
@@ -237,23 +327,31 @@
   .nav-menu {
     position: fixed;
     top: 0;
-    right: -100%;
+    right: 0;
     width: 85%;
     max-width: 360px;
-    height: 100vh;
+    height: 100dvh;
     background-color: var(--bg-secondary);
     flex-direction: column;
     justify-content: center;
+    align-items: flex-start;
     gap: 2rem;
     padding: 3rem 2rem;
-    transition: right var(--transition-normal);
     box-shadow: var(--shadow-md);
     border-left: 1px solid var(--border-light);
     z-index: 999;
+    overflow-y: auto;
+    /* Translate rather than animate `right`, so the drawer composites on the GPU.
+       `visibility` takes the closed drawer's links out of the tab order. */
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform var(--transition-normal), visibility 0s linear var(--transition-normal);
   }
 
   .nav-menu.active {
-    right: 0;
+    transform: translateX(0);
+    visibility: visible;
+    transition: transform var(--transition-normal), visibility 0s;
   }
 
   .mobile-toggle {
@@ -271,3 +369,8 @@
   }
 }
 
+@media (max-width: 560px) {
+  .header-actions .btn {
+    display: none;
+  }
+}

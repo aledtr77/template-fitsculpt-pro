@@ -4,19 +4,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 - Page Not Found | FitSculpt Pro</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ff3b5c'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0e1219">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <link rel="stylesheet" href="../src/styles/main.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+
+  <script>
+    // Applied before first paint so a stored light theme does not flash dark.
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        var theme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
 </head>
 <body>
-  <div style="min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 2rem;">
-    <div>
-      <h1 style="font-size: 8rem; font-weight: 800;" class="text-gradient">404</h1>
-      <h2 style="font-size: 2rem; margin-bottom: 1rem;">Workout Path Not Found</h2>
-      <p style="color: var(--text-secondary); max-width: 480px; margin: 0 auto 2rem auto;">
+  <main class="error-page">
+    <div class="container text-center">
+      <p class="error-code text-gradient">404</p>
+      <h1>Workout Path Not Found</h1>
+      <p class="section-lede">
         Looks like you've wandered off the training track. Let's get you back to the main workout routine!
       </p>
       <a href="../index.html" class="btn btn-primary btn-lg">Return To Home Page</a>
     </div>
-  </div>
+  </main>
+
   <script type="module" src="../src/scripts/main.js"></script>
 </body>
 </html>

@@ -11,7 +11,8 @@
   font-weight: 800;
   font-size: 0.95rem;
   border-radius: var(--radius-full);
-  transition: all var(--transition-bounce);
+  transition: transform var(--transition-bounce), background-color var(--transition-fast),
+              border-color var(--transition-fast), color var(--transition-fast), filter var(--transition-fast);
   white-space: nowrap;
   position: relative;
   overflow: hidden;
@@ -19,10 +20,12 @@
   letter-spacing: -0.01em;
 }
 
+/* Amber carries dark ink, not white: #fff on orange-500 is 2.8:1 and fails AA,
+   while the ink token clears 6.7:1. */
 .btn-primary {
-  background: var(--gradient-accent);
-  color: #ffffff;
-  box-shadow: 0 4px 16px rgba(249, 115, 22, 0.35);
+  background-image: var(--gradient-accent);
+  color: var(--accent-ink);
+  box-shadow: var(--shadow-accent);
 }
 
 .btn-primary:hover {
@@ -31,23 +34,24 @@
 }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.05);
+  background-color: var(--surface-subtle);
   color: var(--text-primary);
   border: 1px solid var(--border-light);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background-color: var(--surface-subtle-hover);
   border-color: var(--border-accent);
   color: var(--accent-primary);
   transform: translateY(-2px);
 }
 
 .btn-gold {
-  background: var(--gradient-accent);
-  color: #080a0f;
-  box-shadow: var(--shadow-glow);
+  background-image: var(--gradient-gold);
+  color: var(--accent-ink);
+  box-shadow: var(--shadow-accent);
 }
 
 .btn-gold:hover {
@@ -67,7 +71,8 @@
 
 /* Glass Card */
 .glass-card {
-  background: var(--bg-card);
+  background-color: var(--bg-card);
+  background-image: var(--gradient-card);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-md);
   padding: 2rem;
@@ -94,7 +99,8 @@
   justify-content: center;
   color: var(--text-primary);
   cursor: pointer;
-  transition: all var(--transition-fast);
+  flex-shrink: 0;
+  transition: color var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast);
 }
 
 .theme-toggle:hover {
@@ -105,25 +111,31 @@
 /* Modals */
 .modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background: rgba(9, 11, 16, 0.85);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   z-index: 2000;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
+  overflow-y: auto;
   opacity: 0;
+  /* `visibility` keeps the closed dialog out of the tab order — opacity alone
+     leaves its inputs focusable behind an invisible layer.
+     It is stepped, not eased: hiding is delayed until the fade finishes, while
+     showing is instant, so scripts can focus the dialog on the same tick. */
+  visibility: hidden;
   pointer-events: none;
-  transition: opacity var(--transition-normal);
+  transition: opacity var(--transition-normal), visibility 0s linear var(--transition-normal);
 }
 
 .modal-overlay.active {
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
+  transition: opacity var(--transition-normal), visibility 0s;
 }
 
 .modal-container {
@@ -134,7 +146,7 @@
   width: 100%;
   padding: 2.5rem;
   position: relative;
-  box-shadow: var(--shadow-glow);
+  box-shadow: var(--shadow-md), var(--shadow-accent);
   transform: scale(0.95);
   transition: transform var(--transition-bounce);
 }
@@ -156,12 +168,54 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
 }
 
 .modal-close:hover {
   background: var(--accent-primary);
-  color: #ffffff;
+  color: var(--accent-ink);
+}
+
+.modal-intro {
+  margin-bottom: 1.5rem;
+}
+
+.modal-intro h2 {
+  font-size: 1.6rem;
+  margin-top: 0.5rem;
+}
+
+.modal-intro p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* Success panel swapped in after a form submits */
+.form-success {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.form-success-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  background-image: var(--gradient-accent);
+  color: var(--accent-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-success h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.form-success p {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
 }
 
 /* Forms & Input Controls */
@@ -185,12 +239,29 @@
   border: 1px solid var(--border-light);
   border-radius: var(--radius-sm);
   color: var(--text-primary);
-  transition: border-color var(--transition-fast);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-input::placeholder, .form-textarea::placeholder {
+  color: var(--text-muted);
 }
 
 .form-input:focus, .form-select:focus, .form-textarea:focus {
   border-color: var(--accent-primary);
-  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2);
+  box-shadow: 0 0 0 3px var(--accent-ring);
+  outline: none;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 7rem;
+}
+
+.form-error {
+  margin-top: 0.75rem;
+  color: var(--accent-primary);
+  font-size: 0.875rem;
+  font-weight: 600;
 }
 
 /* FAQ Accordion */
@@ -203,15 +274,23 @@
   transition: border-color var(--transition-fast);
 }
 
+.accordion-item.active {
+  border-color: var(--border-accent);
+}
+
 .accordion-header {
+  width: 100%;
   padding: 1.25rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
   cursor: pointer;
   font-family: var(--font-heading);
   font-weight: 700;
   font-size: 1.1rem;
+  color: var(--text-primary);
+  text-align: left;
   user-select: none;
 }
 
@@ -221,6 +300,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
   color: var(--accent-primary);
   transition: transform var(--transition-fast);
 }
@@ -230,22 +310,30 @@
 }
 
 .accordion-body {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height var(--transition-normal), padding var(--transition-normal);
-  padding: 0 1.5rem;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--transition-normal);
   color: var(--text-secondary);
 }
 
 .accordion-item.active .accordion-body {
-  padding: 0 1.5rem 1.25rem;
-  max-height: 300px;
+  grid-template-rows: 1fr;
 }
 
-/* Etsy Lead Magnet Banner */
-.etsy-promo-banner {
-  background: linear-gradient(135deg, rgba(249, 115, 22, 0.12) 0%, rgba(2, 132, 199, 0.12) 100%);
-  border: 1px solid var(--accent-primary);
+/* The inner wrapper is what actually collapses, so panels of any length
+   animate correctly — a fixed max-height clips long answers. */
+.accordion-body > div {
+  overflow: hidden;
+}
+
+.accordion-body p {
+  padding: 0 1.5rem 1.25rem;
+}
+
+/* Template Promo Banner */
+.promo-banner {
+  background-image: linear-gradient(135deg, var(--accent-tint-strong) 0%, rgba(2, 132, 199, 0.12) 100%);
+  border: 1px solid var(--border-accent);
   border-radius: var(--radius-lg);
   padding: 2.5rem;
   display: flex;
@@ -257,13 +345,13 @@
   overflow: hidden;
 }
 
-.etsy-badge {
+.promo-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.35rem 0.85rem;
-  background: var(--accent-primary);
-  color: #ffffff;
+  background-image: var(--gradient-accent);
+  color: var(--accent-ink);
   font-weight: 800;
   font-size: 0.8rem;
   border-radius: var(--radius-full);
@@ -272,23 +360,23 @@
   margin-bottom: 0.75rem;
 }
 
-.etsy-promo-content h3 {
+.promo-content h2 {
   font-size: 1.75rem;
   margin-bottom: 0.5rem;
 }
 
-.etsy-promo-content p {
+.promo-text {
   color: var(--text-secondary);
   max-width: 600px;
 }
 
 @media (max-width: 768px) {
-  .etsy-promo-banner {
+  .promo-banner {
     flex-direction: column;
     text-align: center;
   }
-  .etsy-promo-content p {
+
+  .promo-text {
     margin: 0 auto;
   }
 }
-

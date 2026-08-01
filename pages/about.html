@@ -5,61 +5,95 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Coach Elena | FitSculpt Pro</title>
   <meta name="description" content="Learn more about Coach Elena's mission, qualifications, and female fitness transformation methodology.">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ff3b5c'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>">
+  <meta name="theme-color" content="#0e1219">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <link rel="stylesheet" href="../src/styles/main.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+
+  <script>
+    // Applied before first paint so a stored light theme does not flash dark.
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        var theme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
 </head>
 <body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <div class="nav-backdrop" id="navBackdrop"></div>
 
   <!-- Site Header -->
   <header class="site-header scrolled">
     <div class="container header-container">
       <a href="../index.html" class="brand-logo">
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M6 5v14M18 5v14M3 8v8M21 8v8M9 12h6"/>
+        </svg>
         <span>FIT<span class="text-gradient">SCULPT</span></span>
       </a>
 
-      <nav class="nav-menu" id="navMenu">
+      <nav class="nav-menu" id="navMenu" aria-label="Main">
         <a href="../index.html" class="nav-link">Home</a>
-        <a href="about.html" class="nav-link active">About</a>
+        <a href="about.html" class="nav-link active" aria-current="page">About</a>
         <a href="programs.html" class="nav-link">Programs</a>
         <a href="contact.html" class="nav-link">Contact</a>
       </nav>
 
       <div class="header-actions">
-        <button class="theme-toggle" id="themeToggleBtn" aria-label="Toggle Theme">
-          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        <button type="button" class="theme-toggle" id="themeToggleBtn" aria-label="Switch theme">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
         </button>
         <a href="../index.html#calculator" class="btn btn-primary">Try BMI Calculator</a>
+        <button type="button" class="mobile-toggle" id="mobileToggle" aria-label="Menu" aria-expanded="false" aria-controls="navMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </div>
   </header>
 
-  <main style="padding-top: calc(var(--header-height) + 3rem);">
+  <main id="main" class="page-main">
     <section class="section">
       <div class="container">
-        <div class="text-center" style="margin-bottom: 4rem;">
-          <div class="section-tag">Empowering Women Daily</div>
+        <div class="text-center">
+          <p class="section-tag">Empowering Women Daily</p>
           <h1>About <span class="text-gradient">Coach Elena Vance</span></h1>
-          <p style="color: var(--text-secondary); max-width: 650px; margin: 0.75rem auto 0 auto;">
+          <p class="section-lede">
             Master Fitness Specialist certified in Female Exercise Science, Biomechanics, and Precision Nutrition.
           </p>
         </div>
 
         <div class="about-grid">
           <div class="about-image-card">
-            <img src="../src/assets/images/home-chiara.jpg" alt="Coach Elena Training Session">
+            <picture>
+              <source srcset="../src/assets/images/home-chiara.webp" type="image/webp">
+              <img src="../src/assets/images/home-chiara.jpg" alt="Coach Elena leading a training session" width="784" height="760" loading="lazy" decoding="async">
+            </picture>
           </div>
           <div class="about-content">
             <h2>My Coaching <span class="text-gradient">Philosophy</span></h2>
-            <p style="color: var(--text-secondary); margin-top: 1rem;">
+            <p class="lede">
               Fitness shouldn't feel like a punishment or an endless cycle of extreme dieting. My mission is to give women the tools, education, and confidence to build athletic strength and body symmetry that lasts for life.
             </p>
-            <p style="color: var(--text-secondary); margin-top: 1rem;">
+            <p class="lede">
               Over the past 12 years, I've mentored over 1,200 women ranging from post-partum mothers to competitive athletes, helping them drop body fat while retaining high energy and food freedom.
             </p>
 
-            <div style="margin-top: 2rem;">
+            <p class="about-cta">
               <a href="../index.html#pricing" class="btn btn-primary">Join FitSculpt Community</a>
-            </div>
+            </p>
           </div>
         </div>
       </div>
