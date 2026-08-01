@@ -248,33 +248,48 @@
   gap: 0.75rem;
 }
 
+/* Each badge carries its own brand fill, not a theme surface — these are
+   trademarks and people identify them by colour before shape. Values come
+   straight from the official brand kits and stay fixed in both themes. */
 .social-icon {
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border-light);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  color: var(--text-secondary);
-  transition: transform var(--transition-fast), color var(--transition-fast),
-              background-color var(--transition-fast), border-color var(--transition-fast),
-              box-shadow var(--transition-fast);
+  border: none;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+              filter var(--transition-fast);
 }
 
 .social-icon svg {
-  width: 20px;
-  height: 20px;
+  display: block;
+  overflow: visible;
+}
+
+.social-icon--instagram {
+  /* Instagram's official corner-origin ramp: yellow bottom-left to blue top-right */
+  background: radial-gradient(circle at 30% 107%,
+    #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+  --glow: rgba(214, 36, 159, 0.45);
+}
+
+.social-icon--youtube {
+  background: #ff0000;
+  --glow: rgba(255, 0, 0, 0.45);
+}
+
+.social-icon--tiktok {
+  background: #000000;
+  --glow: rgba(37, 244, 238, 0.45);
 }
 
 .social-icon:hover {
-  background-image: var(--gradient-accent);
-  color: var(--accent-ink);
-  border-color: transparent;
   transform: translateY(-3px);
-  box-shadow: var(--shadow-accent);
+  filter: brightness(1.1);
+  box-shadow: 0 6px 18px var(--glow);
 }
 
 .footer-column h2 {
