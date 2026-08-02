@@ -15,8 +15,12 @@ the same structure serves any coaching practice that sells programmes.
 Written by hand in HTML, CSS and JavaScript, assembled with Vite. No framework, no
 CMS, no bought theme underneath.
 
-**The source is public and free to build sites with, client work included.**
-Reselling it as a template is not allowed — see [LICENSE](LICENSE).
+Published as a code reference — this is what my markup and CSS actually look like.
+Read it, take it apart, build on it.
+
+**Free to use, modify and deploy — personal projects and client work included.**
+You may not redistribute or sell it as a template, theme or starter kit, modified
+or not. Full terms in [LICENSE](LICENSE).
 
 > Still being tidied up. The pages work and the build runs, but expect rough edges
 > until this note comes off.
@@ -87,7 +91,8 @@ demos are browsable first at **[codedge.it/templates](https://codedge.it/templat
 
 ## Licence
 
-Source-available, not open source: build what you like with it, don't redistribute it
-as a template. Full terms in [LICENSE](LICENSE).
+Free to use, modify and deploy — personal projects and client work included. You may
+not redistribute or sell it as a template, theme or starter kit, modified or not.
+Full terms in [LICENSE](LICENSE).
 
 Different terms, or a custom build? **contatti.codedge@gmail.com**
