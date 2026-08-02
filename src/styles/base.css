@@ -180,6 +180,32 @@ ul, ol {
   margin-bottom: 1rem;
 }
 
+/* Running prose is justified once the layout is a single column, so the blocks
+   of copy read as even rectangles instead of a ragged right edge next to the
+   centred headings. Only paragraph-length copy is listed: `text-align: justify`
+   leaves the last line of a block ranged left, so a one-line label under it
+   would fall out of a centred group. Hyphenation goes with it — justifying a
+   ~35-character phone measure without it opens rivers of white space between
+   the words. */
+@media (max-width: 868px) {
+  .hero-lede,
+  .lede,
+  .feature-box p,
+  .program-body p,
+  .quote-text,
+  .accordion-body p,
+  /* Not the credit line under them: it is one line, and it centres with the
+     rest of the footer. */
+  .footer-notice p:not(.footer-credit),
+  .legal-notice p,
+  .legal-prose p,
+  .legal-prose li {
+    text-align: justify;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+}
+
 /* Respect users who ask the OS to reduce motion */
 @media (prefers-reduced-motion: reduce) {
   html {

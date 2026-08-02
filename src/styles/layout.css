@@ -468,14 +468,46 @@
   }
 }
 
+/* Stacked into one column, the footer reads as a single centred block. Left
+   alignment only holds together while the four columns sit side by side and
+   share a top edge: one under the other, each ragged right edge landed
+   somewhere different and the whole footer looked lopsided. */
 @media (max-width: 868px) {
   .footer-grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 2.5rem;
+    text-align: center;
+  }
+
+  .footer-brand .brand-logo,
+  .social-links,
+  .footer-legal {
+    justify-content: center;
+  }
+
+  .footer-brand p {
+    margin-inline: auto;
+  }
+
+  .footer-links {
+    align-items: center;
+  }
+
+  /* The links are laid out as a column of flex items: without this each one
+     stretches the full width and its hover target reaches far past the label. */
+  .footer-links a {
+    align-self: center;
   }
 
   .footer-bottom {
     flex-direction: column;
+    text-align: center;
+  }
+
+  /* Centres the one-line credit. The two disclosure paragraphs above it are
+     five or six lines each on a phone and are justified instead, with the rest
+     of the running prose, in base.css. */
+  .footer-notice {
     text-align: center;
   }
 }
