@@ -11,7 +11,7 @@ export default defineConfig({
         about: resolve(__dirname, 'pages/about.html'),
         programs: resolve(__dirname, 'pages/programs.html'),
         contact: resolve(__dirname, 'pages/contact.html'),
-        notFound: resolve(__dirname, 'pages/404.html')
+        notFound: resolve(__dirname, '404.html')
       }
     }
   },

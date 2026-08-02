@@ -23,7 +23,8 @@ Reselling it as a template is not allowed — see [LICENSE](LICENSE).
 
 ## What's in it
 
-- **Five pages** — landing page plus about, programs, contact and a custom 404
+- **Five pages** — landing page plus about, programs, contact and a custom 404,
+  all sharing one navigation bar and one footer
 - **BMI and calorie calculator** — height, weight and activity level in, result out,
   without leaving the page
 - **Filterable program grid** for splitting training plans by type
@@ -39,11 +40,18 @@ tokens, reset, layout, components, sections — and scripts by feature.
 
 ```
 index.html              landing page
-pages/                  about, programs, contact, 404
+404.html                at the root, where a host looks for it
+pages/                  about, programs, contact
 src/styles/             theme, base, layout, components, sections, main
 src/scripts/            theme, calculator, modal, animations, main
 vite.config.js
 ```
+
+The 404 sits at the root because that is where Cloudflare Pages, Netlify and
+GitHub Pages go looking for it — under `pages/` it builds fine and is never
+served. Its links are absolute for the same reason: it answers for any unknown
+URL at any depth, so a relative `about.html` would resolve somewhere different
+every time.
 
 ## Run it locally
 
