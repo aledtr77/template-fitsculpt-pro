@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 - Page Not Found | FitSculpt Pro</title>
   <meta name="robots" content="noindex">
-  <meta name="theme-color" content="#0e1219">
+  <meta name="theme-color" content="#0e1219" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
   <link rel="stylesheet" href="/src/styles/main.css">
@@ -33,8 +34,9 @@
 
   <div class="nav-backdrop" id="navBackdrop"></div>
 
-  <!-- Site Header. Identical on every page: the labels never change, only the
-       hrefs, which resolve to a section on the home page and to a file elsewhere. -->
+  <!-- Site Header. Identical on every page. Every link is a section of the
+       landing page: the legal pages and the 404 reach them through index.html,
+       the landing page itself through a bare fragment. -->
   <header class="site-header scrolled">
     <div class="container header-container">
       <a href="/" class="brand-logo">
@@ -46,13 +48,14 @@
 
       <nav class="nav-menu" id="navMenu" aria-label="Main">
         <a href="/" class="nav-link">Home</a>
-        <a href="/pages/about.html" class="nav-link">About</a>
+        <a href="/#about" class="nav-link">About</a>
         <a href="/#calculator" class="nav-link">Calculator</a>
-        <a href="/pages/programs.html" class="nav-link">Programs</a>
+        <a href="/#programs" class="nav-link">Programs</a>
         <a href="/#transformations" class="nav-link">Results</a>
         <a href="/#pricing" class="nav-link">Memberships</a>
         <a href="/#faq" class="nav-link">FAQ</a>
-        <a href="/pages/contact.html" class="nav-link">Contact</a>
+        <a href="/#contact" class="nav-link">Contact</a>
+        <a href="/#contact" class="btn btn-primary nav-cta">Claim Free Call</a>
       </nav>
 
       <div class="header-actions">
@@ -61,7 +64,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
           </svg>
         </button>
-        <a href="/pages/contact.html" class="btn btn-primary">Claim Free Call</a>
+        <a href="/#contact" class="btn btn-primary">Claim Free Call</a>
         <button type="button" class="mobile-toggle" id="mobileToggle" aria-label="Menu" aria-expanded="false" aria-controls="navMenu">
           <span></span>
           <span></span>
@@ -123,18 +126,18 @@
           <h2>Navigation</h2>
           <div class="footer-links">
             <a href="/">Home</a>
-            <a href="/pages/about.html">About the Coach</a>
+            <a href="/#about">About the Coach</a>
             <a href="/#calculator">BMI Calculator</a>
-            <a href="/pages/programs.html">Training Programs</a>
+            <a href="/#programs">Training Programs</a>
           </div>
         </nav>
 
         <nav class="footer-column" aria-label="Programs">
           <h2>Programs</h2>
           <div class="footer-links">
-            <a href="/pages/programs.html">Sculpt &amp; Tone</a>
-            <a href="/pages/programs.html">Metabolic HIIT</a>
-            <a href="/pages/programs.html">1-on-1 VIP Mentorship</a>
+            <a href="/#programs">Sculpt &amp; Tone</a>
+            <a href="/#programs">Metabolic HIIT</a>
+            <a href="/#programs">1-on-1 VIP Mentorship</a>
             <a href="/#pricing">Membership Plans</a>
           </div>
         </nav>
@@ -144,7 +147,7 @@
           <div class="footer-links">
             <a href="/#transformations">Results</a>
             <a href="/#faq">FAQ</a>
-            <a href="/pages/contact.html">Contact</a>
+            <a href="/#contact">Contact</a>
             <a href="https://codedge.it/templates/" target="_blank" rel="noopener noreferrer" class="footer-link-accent">
               Commercial Template Licence
               <span aria-hidden="true">&rarr;</span>
@@ -156,7 +159,30 @@
 
       <div class="footer-bottom">
         <p>&copy; 2026 FitSculpt Pro Template. All rights reserved.</p>
-        <p>Built with Vite &amp; Modern Vanilla CSS</p>
+        <nav class="footer-legal" aria-label="Legal">
+          <a href="/pages/privacy.html">Privacy Policy</a>
+          <a href="/pages/disclaimer.html">Disclaimer &amp; AI Notice</a>
+          <a href="/#contact">Contact</a>
+        </nav>
+      </div>
+
+      <!-- Transparency notice. Stated on every page rather than buried one click
+           away, because it is what makes the imagery and the testimonials honest. -->
+      <div class="footer-notice">
+        <p>
+          <strong>Demo content notice.</strong> Every photograph on this site was generated with
+          artificial intelligence. No real models, actors, clients or coaches appear anywhere on
+          it, and any resemblance to an actual person, living or dead, is entirely coincidental.
+          Names, testimonials, before-and-after results, statistics, prices and credentials are
+          illustrative placeholders and wholly fictional.
+        </p>
+        <p>
+          Nothing here is medical, nutritional or professional health advice, and the calculator
+          returns a rough estimate rather than a diagnosis. Read the
+          <a href="/pages/disclaimer.html">full disclaimer</a> before acting on anything you find on this
+          site.
+        </p>
+        <p class="footer-credit">Built with Vite &amp; Modern Vanilla CSS</p>
       </div>
     </div>
   </footer>

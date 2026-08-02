@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FitSculpt Pro | Elite Female Body Sculpting &amp; Bio-Individual Coaching</title>
   <meta name="description" content="Sculpt a lean, powerful female physique with elite 1-on-1 coaching, custom bio-individual nutrition, and science-backed body sculpting by Master Coach Elena Vance.">
-  <meta name="theme-color" content="#0e1219">
+  <meta name="theme-color" content="#0e1219" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)">
 
   <!-- Open Graph / Social Media. Both URLs are absolute because scrapers do not
        resolve relative paths — swap the origin for your own domain.
@@ -13,6 +14,7 @@
        src/assets/ gets a content hash in its filename and the URL would break on
        the next build. -->
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="FitSculpt Pro">
   <meta property="og:title" content="FitSculpt Pro - Elite Female Physique Transformation">
   <meta property="og:description" content="Custom workout protocols and bio-individual nutrition engineered exclusively for ambitious women.">
   <meta property="og:image" content="https://fitsculpt-pro.pages.dev/og-image.jpg">
@@ -23,6 +25,7 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="canonical" href="https://fitsculpt-pro.pages.dev/">
 
   <!-- Fonts are linked, not @imported: an @import inside the stylesheet cannot
        start downloading until the CSS itself has parsed, adding a round trip. -->
@@ -45,6 +48,96 @@
       }
     })();
   </script>
+
+  <!-- Structured data. Deliberately no AggregateRating or Review: the "4.9/5"
+       and the testimonials on this page are invented, and marking invented
+       ratings up is both a Google structured-data policy violation and the
+       exact misleading practice the disclaimer page warns about. Add them only
+       once you have genuine, verifiable reviews. Swap the origin for your own. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://fitsculpt-pro.pages.dev/#website",
+        "url": "https://fitsculpt-pro.pages.dev/",
+        "name": "FitSculpt Pro",
+        "inLanguage": "en"
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://fitsculpt-pro.pages.dev/#business",
+        "name": "FitSculpt Pro",
+        "url": "https://fitsculpt-pro.pages.dev/",
+        "image": "https://fitsculpt-pro.pages.dev/og-image.jpg",
+        "description": "Online physique and body-sculpting coaching for women: 1-on-1 programming, bio-individual nutrition and progressive strength protocols.",
+        "areaServed": "Worldwide",
+        "makesOffer": [
+          {
+            "@type": "Offer",
+            "name": "Starter Fit",
+            "price": "49",
+            "priceCurrency": "USD",
+            "description": "Monthly custom workout routine, macro guidelines, video vault and community chat."
+          },
+          {
+            "@type": "Offer",
+            "name": "Sculpt Pro",
+            "price": "99",
+            "priceCurrency": "USD",
+            "description": "Personalised programme, custom meal plan, bi-weekly adjustments and direct support."
+          },
+          {
+            "@type": "Offer",
+            "name": "VIP Mentorship",
+            "price": "199",
+            "priceCurrency": "USD",
+            "description": "Everything in Sculpt Pro plus weekly 1-on-1 video calls and priority messaging."
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://fitsculpt-pro.pages.dev/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Do I need access to a commercial gym?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No! Programs are fully customized to your equipment setup. Whether you train at a commercial gym or at home with dumbbells, we tailor your plan accordingly."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How are my workouts updated as I progress?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "During bi-weekly or weekly check-ins, we analyze your biofeedback, weight logs, and progress pictures to make continuous adjustments to your training volume and macros."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Will lifting weights make me bulky?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Absolutely not! Females have a fraction of the testosterone required to build excessive bulk. Progressive weight training creates the toned, firm, hourglass shape most women desire."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How soon can I expect visible results?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Most clients notice increased energy and initial body composition changes within 14 days, with significant physical transformations occurring between weeks 8 and 12."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -53,8 +146,9 @@
   <!-- Backdrop for Mobile Drawer -->
   <div class="nav-backdrop" id="navBackdrop"></div>
 
-  <!-- Site Header. Identical on every page: the labels never change, only the
-       hrefs, which resolve to a section on the home page and to a file elsewhere. -->
+  <!-- Site Header. Identical on every page. Every link is a section of the
+       landing page: the legal pages and the 404 reach them through index.html,
+       the landing page itself through a bare fragment. -->
   <header class="site-header" id="siteHeader">
     <div class="container header-container">
       <a href="index.html" class="brand-logo" id="brandLogo">
@@ -66,13 +160,14 @@
 
       <nav class="nav-menu" id="navMenu" aria-label="Main">
         <a href="#hero" class="nav-link">Home</a>
-        <a href="pages/about.html" class="nav-link">About</a>
+        <a href="#about" class="nav-link">About</a>
         <a href="#calculator" class="nav-link">Calculator</a>
-        <a href="pages/programs.html" class="nav-link">Programs</a>
+        <a href="#programs" class="nav-link">Programs</a>
         <a href="#transformations" class="nav-link">Results</a>
         <a href="#pricing" class="nav-link">Memberships</a>
         <a href="#faq" class="nav-link">FAQ</a>
-        <a href="pages/contact.html" class="nav-link">Contact</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <a href="#contact" class="btn btn-primary nav-cta">Claim Free Call</a>
       </nav>
 
       <div class="header-actions">
@@ -81,7 +176,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
           </svg>
         </button>
-        <button type="button" class="btn btn-primary" data-open-modal id="headerCtaBtn">Claim Free Call</button>
+        <button type="button" class="btn btn-primary" data-open-modal="general" id="headerCtaBtn">Claim Free Call</button>
         <button type="button" class="mobile-toggle" id="mobileToggle" aria-label="Menu" aria-expanded="false" aria-controls="navMenu">
           <span></span>
           <span></span>
@@ -106,7 +201,7 @@
             <p class="hero-lede">Stop guessing. Achieve a lean, sculpted female physique with 1-on-1 expert coaching, custom bio-individual nutrition, and science-backed strength protocols built for sustainable results.</p>
 
             <div class="hero-actions">
-              <button type="button" class="btn btn-primary btn-lg" data-open-modal id="heroPrimaryCta">Claim Strategy Session</button>
+              <button type="button" class="btn btn-primary btn-lg" data-open-modal="general" id="heroPrimaryCta">Claim Strategy Session</button>
               <a href="#programs" class="btn btn-secondary btn-lg" id="heroSecondaryCta">Explore Protocols</a>
             </div>
 
@@ -125,10 +220,11 @@
 
           <div class="hero-visual">
             <div class="hero-image-wrapper">
-              <picture>
-                <source srcset="./src/assets/images/hero-model.webp" type="image/webp">
-                <img src="./src/assets/images/hero-model.png" alt="Coach Elena Vance in a training stance" width="1024" height="1024" fetchpriority="high" decoding="async">
-              </picture>
+              <img src="./src/assets/images/hero-model-1024.webp"
+                   srcset="./src/assets/images/hero-model-512.webp 512w,
+                           ./src/assets/images/hero-model-1024.webp 1024w"
+                   sizes="(max-width: 1024px) 92vw, 38vw"
+                   alt="Coach Elena Vance in a training stance" width="1024" height="1024" fetchpriority="high" decoding="async">
             </div>
             <div class="hero-floating-badge">
               <div class="floating-icon">
@@ -175,10 +271,11 @@
       <div class="container">
         <div class="about-grid">
           <div class="about-image-card">
-            <picture>
-              <source srcset="./src/assets/images/coach-elena.webp" type="image/webp">
-              <img src="./src/assets/images/coach-elena.png" alt="Coach Elena Vance" width="1024" height="1024" loading="lazy" decoding="async">
-            </picture>
+            <img src="./src/assets/images/coach-elena-1024.webp"
+                 srcset="./src/assets/images/coach-elena-512.webp 512w,
+                         ./src/assets/images/coach-elena-1024.webp 1024w"
+                 sizes="(max-width: 1024px) 92vw, 42vw"
+                 alt="Coach Elena Vance" width="1024" height="1024" loading="lazy" decoding="async">
           </div>
           <div class="about-content">
             <p class="section-tag">Meet Your Coach</p>
@@ -207,7 +304,7 @@
             </div>
 
             <p class="about-cta">
-              <button type="button" class="btn btn-primary" data-open-modal id="aboutCtaBtn">Book Your Free Strategy Session</button>
+              <button type="button" class="btn btn-primary" data-open-modal="general" id="aboutCtaBtn">Book Your Free Strategy Session</button>
             </p>
           </div>
         </div>
@@ -261,7 +358,7 @@
               <p class="calc-category" id="bmiCategory">Normal Weight (Sculpt &amp; Maintain)</p>
               <p class="calc-calories" id="macroCalories">1,850 kcal/day Target</p>
               <p class="calc-note">Want a personalized meal plan based on this target?</p>
-              <button type="button" class="btn btn-secondary btn-sm" data-open-modal id="calcModalTrigger">Get Custom Macro Plan</button>
+              <button type="button" class="btn btn-secondary btn-sm" data-open-modal="macro-plan" id="calcModalTrigger">Get Custom Macro Plan</button>
             </div>
           </div>
         </div>
@@ -289,51 +386,54 @@
         <div class="programs-grid">
           <!-- Program 1 -->
           <article class="program-card" data-category="sculpt">
-            <picture>
-              <source srcset="./src/assets/images/result-1.webp" type="image/webp">
-              <img src="./src/assets/images/result-1.png" alt="" width="1024" height="1024" class="program-img" loading="lazy" decoding="async">
-            </picture>
+            <img src="./src/assets/images/result-1-1024.webp"
+                 srcset="./src/assets/images/result-1-512.webp 512w,
+                         ./src/assets/images/result-1-1024.webp 1024w"
+                 sizes="(max-width: 768px) 92vw, (max-width: 1024px) 46vw, 31vw"
+                 alt="" width="1024" height="1024" class="program-img" loading="lazy" decoding="async">
             <div class="program-body">
               <span class="program-badge">Body Sculpting</span>
               <h3>Sculpt &amp; Tone Protocol</h3>
               <p>Build lean hourglass muscle definition, firm up glutes and core, and elevate your posture with progressive resistance training.</p>
               <div class="program-meta">
                 <span>Duration: 12 Weeks</span>
-                <button type="button" class="btn btn-secondary btn-sm" data-open-modal>Learn More</button>
+                <button type="button" class="btn btn-secondary btn-sm" data-open-modal="sculpt-tone">Request This Plan</button>
               </div>
             </div>
           </article>
 
           <!-- Program 2 -->
           <article class="program-card" data-category="hiit">
-            <picture>
-              <source srcset="./src/assets/images/result-2.webp" type="image/webp">
-              <img src="./src/assets/images/result-2.png" alt="" width="1024" height="1024" class="program-img" loading="lazy" decoding="async">
-            </picture>
+            <img src="./src/assets/images/result-2-1024.webp"
+                 srcset="./src/assets/images/result-2-512.webp 512w,
+                         ./src/assets/images/result-2-1024.webp 1024w"
+                 sizes="(max-width: 768px) 92vw, (max-width: 1024px) 46vw, 31vw"
+                 alt="" width="1024" height="1024" class="program-img" loading="lazy" decoding="async">
             <div class="program-body">
               <span class="program-badge">Fat Loss</span>
               <h3>Metabolic HIIT Burn</h3>
               <p>High-energy, time-efficient cardio and strength circuits designed to maximize post-workout calorie burn and speed up metabolic rate.</p>
               <div class="program-meta">
                 <span>Duration: 8 Weeks</span>
-                <button type="button" class="btn btn-secondary btn-sm" data-open-modal>Learn More</button>
+                <button type="button" class="btn btn-secondary btn-sm" data-open-modal="metabolic-hiit">Request This Plan</button>
               </div>
             </div>
           </article>
 
           <!-- Program 3 -->
           <article class="program-card" data-category="vip">
-            <picture>
-              <source srcset="./src/assets/images/result-3.webp" type="image/webp">
-              <img src="./src/assets/images/result-3.png" alt="" width="1024" height="1024" class="program-img" loading="lazy" decoding="async">
-            </picture>
+            <img src="./src/assets/images/result-3-1024.webp"
+                 srcset="./src/assets/images/result-3-512.webp 512w,
+                         ./src/assets/images/result-3-1024.webp 1024w"
+                 sizes="(max-width: 768px) 92vw, (max-width: 1024px) 46vw, 31vw"
+                 alt="" width="1024" height="1024" class="program-img" loading="lazy" decoding="async">
             <div class="program-body">
               <span class="program-badge">VIP Coaching</span>
               <h3>1-on-1 VIP Transformation</h3>
               <p>Full 360-degree personal mentorship with custom workouts, tailored macro menu, weekly video check-ins, and direct WhatsApp access.</p>
               <div class="program-meta">
                 <span>Duration: 16 Weeks</span>
-                <button type="button" class="btn btn-primary btn-sm" data-open-modal>Apply Now</button>
+                <button type="button" class="btn btn-primary btn-sm" data-open-modal="vip-transformation">Apply Now</button>
               </div>
             </div>
           </article>
@@ -355,13 +455,13 @@
         <div class="transformations-grid">
           <!-- Client 1 -->
           <figure class="transformation-card">
-            <div class="client-header">
+            <figcaption class="client-header">
               <img src="./src/assets/images/result-1-avatar.webp" alt="" width="56" height="56" class="client-avatar" loading="lazy" decoding="async">
-              <figcaption class="client-name">
+              <div class="client-name">
                 <h3>Chiara S.</h3>
                 <span><span aria-hidden="true">★★★★★</span><span class="visually-hidden">Rated 5 out of 5.</span> Verified Client</span>
-              </figcaption>
-            </div>
+              </div>
+            </figcaption>
             <blockquote class="quote-text">Working with Coach Elena completely changed my relationship with fitness. I lost 14 kg in 4 months and feel stronger than ever!</blockquote>
             <div class="client-metrics">
               <span class="metric-primary">-14 kg Fat Lost</span>
@@ -371,13 +471,13 @@
 
           <!-- Client 2 -->
           <figure class="transformation-card">
-            <div class="client-header">
+            <figcaption class="client-header">
               <img src="./src/assets/images/result-2-avatar.webp" alt="" width="56" height="56" class="client-avatar" loading="lazy" decoding="async">
-              <figcaption class="client-name">
+              <div class="client-name">
                 <h3>Elisa M.</h3>
                 <span><span aria-hidden="true">★★★★★</span><span class="visually-hidden">Rated 5 out of 5.</span> Verified Client</span>
-              </figcaption>
-            </div>
+              </div>
+            </figcaption>
             <blockquote class="quote-text">I used to do hours of random cardio with no results. Elena's structured weight lifting plan gave me defined abs and glute tone in 12 weeks!</blockquote>
             <div class="client-metrics">
               <span class="metric-primary">Glute Tone &amp; Lean Waist</span>
@@ -387,13 +487,13 @@
 
           <!-- Client 3 -->
           <figure class="transformation-card">
-            <div class="client-header">
+            <figcaption class="client-header">
               <img src="./src/assets/images/result-3-avatar.webp" alt="" width="56" height="56" class="client-avatar" loading="lazy" decoding="async">
-              <figcaption class="client-name">
+              <div class="client-name">
                 <h3>Marta R.</h3>
                 <span><span aria-hidden="true">★★★★★</span><span class="visually-hidden">Rated 5 out of 5.</span> Verified Client</span>
-              </figcaption>
-            </div>
+              </div>
+            </figcaption>
             <blockquote class="quote-text">The flexible nutrition plan allowed me to enjoy weekend dinners out while still dropping 2 dress sizes. Absolutely recommended!</blockquote>
             <div class="client-metrics">
               <span class="metric-primary">-2 Dress Sizes</span>
@@ -438,7 +538,7 @@
               <li><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Access to FitSculpt Video Vault</li>
               <li><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Community Group Chat</li>
             </ul>
-            <button type="button" class="btn btn-secondary" data-open-modal id="pricingStarterBtn">Select Starter</button>
+            <button type="button" class="btn btn-secondary" data-open-modal="starter" id="pricingStarterBtn">Select Starter</button>
           </div>
 
           <!-- Featured Pro -->
@@ -456,7 +556,7 @@
               <li><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Bi-Weekly Progress Adjustments</li>
               <li><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Direct Email &amp; App Support</li>
             </ul>
-            <button type="button" class="btn btn-primary" data-open-modal id="pricingProBtn">Get Sculpt Pro</button>
+            <button type="button" class="btn btn-primary" data-open-modal="sculpt-pro" id="pricingProBtn">Get Sculpt Pro</button>
           </div>
 
           <!-- VIP Elite -->
@@ -473,7 +573,7 @@
               <li><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Priority WhatsApp Messaging</li>
               <li><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Custom Supplementation Protocol</li>
             </ul>
-            <button type="button" class="btn btn-gold" data-open-modal id="pricingVipBtn">Apply For VIP</button>
+            <button type="button" class="btn btn-gold" data-open-modal="vip-mentorship" id="pricingVipBtn">Apply For VIP</button>
           </div>
         </div>
       </div>
@@ -493,56 +593,56 @@
         <div class="accordion">
           <div class="accordion-item active">
             <h3>
-              <button type="button" class="accordion-header" aria-expanded="true" aria-controls="faq-1">
+              <button type="button" class="accordion-header" id="faq-1-label" aria-expanded="true" aria-controls="faq-1">
                 <span>Do I need access to a commercial gym?</span>
                 <span class="accordion-icon" aria-hidden="true">
                   <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 9l6 6 6-6"/></svg>
                 </span>
               </button>
             </h3>
-            <div class="accordion-body" id="faq-1" role="region">
+            <div class="accordion-body" id="faq-1" role="region" aria-labelledby="faq-1-label">
               <div><p>No! Programs are fully customized to your equipment setup. Whether you train at a commercial gym or at home with dumbbells, we tailor your plan accordingly.</p></div>
             </div>
           </div>
 
           <div class="accordion-item">
             <h3>
-              <button type="button" class="accordion-header" aria-expanded="false" aria-controls="faq-2">
+              <button type="button" class="accordion-header" id="faq-2-label" aria-expanded="false" aria-controls="faq-2">
                 <span>How are my workouts updated as I progress?</span>
                 <span class="accordion-icon" aria-hidden="true">
                   <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 9l6 6 6-6"/></svg>
                 </span>
               </button>
             </h3>
-            <div class="accordion-body" id="faq-2" role="region">
+            <div class="accordion-body" id="faq-2" role="region" aria-labelledby="faq-2-label">
               <div><p>During bi-weekly or weekly check-ins, we analyze your biofeedback, weight logs, and progress pictures to make continuous adjustments to your training volume and macros.</p></div>
             </div>
           </div>
 
           <div class="accordion-item">
             <h3>
-              <button type="button" class="accordion-header" aria-expanded="false" aria-controls="faq-3">
+              <button type="button" class="accordion-header" id="faq-3-label" aria-expanded="false" aria-controls="faq-3">
                 <span>Will lifting weights make me bulky?</span>
                 <span class="accordion-icon" aria-hidden="true">
                   <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 9l6 6 6-6"/></svg>
                 </span>
               </button>
             </h3>
-            <div class="accordion-body" id="faq-3" role="region">
+            <div class="accordion-body" id="faq-3" role="region" aria-labelledby="faq-3-label">
               <div><p>Absolutely not! Females have a fraction of the testosterone required to build excessive bulk. Progressive weight training creates the toned, firm, hourglass shape most women desire.</p></div>
             </div>
           </div>
 
           <div class="accordion-item">
             <h3>
-              <button type="button" class="accordion-header" aria-expanded="false" aria-controls="faq-4">
+              <button type="button" class="accordion-header" id="faq-4-label" aria-expanded="false" aria-controls="faq-4">
                 <span>How soon can I expect visible results?</span>
                 <span class="accordion-icon" aria-hidden="true">
                   <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 9l6 6 6-6"/></svg>
                 </span>
               </button>
             </h3>
-            <div class="accordion-body" id="faq-4" role="region">
+            <div class="accordion-body" id="faq-4" role="region" aria-labelledby="faq-4-label">
               <div><p>Most clients notice increased energy and initial body composition changes within 14 days, with significant physical transformations occurring between weeks 8 and 12.</p></div>
             </div>
           </div>
@@ -565,6 +665,59 @@
         </a>
       </div>
     </section>
+
+    <!-- Contact. The conversion point lives on the page, not one click away:
+         sending a visitor to a separate document to reach the form loses them. -->
+    <section class="section" id="contact">
+      <div class="container container-narrow">
+        <div class="text-center">
+          <p class="section-tag">Get In Touch</p>
+          <h2>Let's Talk <span class="text-gradient">Fitness</span></h2>
+          <p class="section-lede">
+            Send a message and Coach Elena's team will respond within 24 hours.
+          </p>
+        </div>
+
+        <div class="glass-card">
+          <!-- No backend ships with the template: the handler in
+               src/scripts/contact-form.js confirms locally. Point `action` at
+               your own endpoint when wiring this up for real. -->
+          <form id="pageContactForm">
+            <div class="form-group">
+              <label class="form-label" for="contactName">Your Name</label>
+              <input type="text" id="contactName" name="name" class="form-input" placeholder="e.g. Jessica Alba" autocomplete="name" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contactEmail">Email Address</label>
+              <input type="email" id="contactEmail" name="email" class="form-input" placeholder="e.g. jessica@example.com" autocomplete="email" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contactInterest">I'm interested in</label>
+            <select id="contactInterest" name="interest" class="form-select" data-interest-select>
+              <option value="general">A free strategy call</option>
+              <optgroup label="Training programmes">
+                <option value="sculpt-tone">Sculpt &amp; Tone Protocol &mdash; 12 weeks</option>
+                <option value="metabolic-hiit">Metabolic HIIT Burn &mdash; 8 weeks</option>
+                <option value="vip-transformation">1-on-1 VIP Transformation &mdash; 16 weeks</option>
+              </optgroup>
+              <optgroup label="Memberships">
+                <option value="starter">Starter Fit</option>
+                <option value="sculpt-pro">Sculpt Pro</option>
+                <option value="vip-mentorship">VIP Mentorship</option>
+              </optgroup>
+              <option value="macro-plan">A custom macro plan</option>
+            </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contactMessage">Anything else? <span class="form-optional">(optional)</span></label>
+              <textarea id="contactMessage" name="message" class="form-textarea" rows="4" placeholder="Tell us about your goals, your schedule, where you train..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- Consultation Booking Modal Overlay -->
@@ -587,13 +740,25 @@
           <input type="email" id="clientEmail" name="email" class="form-input" placeholder="e.g. sarah@example.com" autocomplete="email" required>
         </div>
         <div class="form-group">
-          <label class="form-label" for="clientGoal">Primary Fitness Goal</label>
-          <select id="clientGoal" name="goal" class="form-select">
-            <option value="fat-loss">Fat Loss &amp; Muscle Toning</option>
-            <option value="glute-sculpting">Glute &amp; Core Sculpting</option>
-            <option value="muscle-gain">Lean Muscle Building</option>
-            <option value="lifestyle">Overall Health &amp; Vitality</option>
-          </select>
+          <label class="form-label" for="clientInterest">I'm interested in</label>
+            <select id="clientInterest" name="interest" class="form-select" data-interest-select>
+          <option value="general">A free strategy call</option>
+          <optgroup label="Training programmes">
+            <option value="sculpt-tone">Sculpt &amp; Tone Protocol &mdash; 12 weeks</option>
+            <option value="metabolic-hiit">Metabolic HIIT Burn &mdash; 8 weeks</option>
+            <option value="vip-transformation">1-on-1 VIP Transformation &mdash; 16 weeks</option>
+          </optgroup>
+          <optgroup label="Memberships">
+            <option value="starter">Starter Fit</option>
+            <option value="sculpt-pro">Sculpt Pro</option>
+            <option value="vip-mentorship">VIP Mentorship</option>
+          </optgroup>
+          <option value="macro-plan">A custom macro plan</option>
+        </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="clientMessage">Anything else? <span class="form-optional">(optional)</span></label>
+          <textarea id="clientMessage" name="message" class="form-textarea" rows="3" placeholder="Optional &mdash; anything Coach Elena should know."></textarea>
         </div>
         <button type="submit" class="btn btn-primary btn-block" id="modalSubmitBtn">Submit Request</button>
       </form>
@@ -642,18 +807,18 @@
           <h2>Navigation</h2>
           <div class="footer-links">
             <a href="#hero">Home</a>
-            <a href="pages/about.html">About the Coach</a>
+            <a href="#about">About the Coach</a>
             <a href="#calculator">BMI Calculator</a>
-            <a href="pages/programs.html">Training Programs</a>
+            <a href="#programs">Training Programs</a>
           </div>
         </nav>
 
         <nav class="footer-column" aria-label="Programs">
           <h2>Programs</h2>
           <div class="footer-links">
-            <a href="pages/programs.html">Sculpt &amp; Tone</a>
-            <a href="pages/programs.html">Metabolic HIIT</a>
-            <a href="pages/programs.html">1-on-1 VIP Mentorship</a>
+            <a href="#programs">Sculpt &amp; Tone</a>
+            <a href="#programs">Metabolic HIIT</a>
+            <a href="#programs">1-on-1 VIP Mentorship</a>
             <a href="#pricing">Membership Plans</a>
           </div>
         </nav>
@@ -663,7 +828,7 @@
           <div class="footer-links">
             <a href="#transformations">Results</a>
             <a href="#faq">FAQ</a>
-            <a href="pages/contact.html">Contact</a>
+            <a href="#contact">Contact</a>
             <a href="https://codedge.it/templates/" target="_blank" rel="noopener noreferrer" class="footer-link-accent">
               Commercial Template Licence
               <span aria-hidden="true">&rarr;</span>
@@ -675,7 +840,30 @@
 
       <div class="footer-bottom">
         <p>&copy; 2026 FitSculpt Pro Template. All rights reserved.</p>
-        <p>Built with Vite &amp; Modern Vanilla CSS</p>
+        <nav class="footer-legal" aria-label="Legal">
+          <a href="pages/privacy.html">Privacy Policy</a>
+          <a href="pages/disclaimer.html">Disclaimer &amp; AI Notice</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+
+      <!-- Transparency notice. Stated on every page rather than buried one click
+           away, because it is what makes the imagery and the testimonials honest. -->
+      <div class="footer-notice">
+        <p>
+          <strong>Demo content notice.</strong> Every photograph on this site was generated with
+          artificial intelligence. No real models, actors, clients or coaches appear anywhere on
+          it, and any resemblance to an actual person, living or dead, is entirely coincidental.
+          Names, testimonials, before-and-after results, statistics, prices and credentials are
+          illustrative placeholders and wholly fictional.
+        </p>
+        <p>
+          Nothing here is medical, nutritional or professional health advice, and the calculator
+          returns a rough estimate rather than a diagnosis. Read the
+          <a href="pages/disclaimer.html">full disclaimer</a> before acting on anything you find on this
+          site.
+        </p>
+        <p class="footer-credit">Built with Vite &amp; Modern Vanilla CSS</p>
       </div>
     </div>
   </footer>
