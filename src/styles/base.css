@@ -9,6 +9,9 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  /* Reserve the scrollbar track always, so freezing the body when an overlay
+     opens does not remove it and shunt the whole page sideways. */
+  scrollbar-gutter: stable;
   -webkit-text-size-adjust: 100%;
   /* Anchor targets clear the fixed header instead of hiding behind it */
   scroll-padding-top: calc(var(--header-height) + 1.5rem);
@@ -148,8 +151,6 @@ ul, ol {
 }
 
 .text-center { text-align: center; }
-.text-left { text-align: left; }
-.text-right { text-align: right; }
 
 .visually-hidden {
   position: absolute;

@@ -66,7 +66,7 @@
 
 .btn-sm {
   padding: 0.5rem 1.1rem;
-  font-size: 0.85rem;
+  font-size: 0.875rem;
 }
 
 /* Glass Card */
@@ -187,7 +187,7 @@
 
 .modal-intro p {
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
 }
 
 /* Success panel swapped in after a form submits */
@@ -218,6 +218,12 @@
   margin-bottom: 1.5rem;
 }
 
+/* Marks a field the visitor may skip, so "optional" is not guesswork */
+.form-optional {
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
 /* Forms & Input Controls */
 .form-group {
   margin-bottom: 1.25rem;
@@ -227,7 +233,7 @@
 }
 
 .form-label {
-  font-size: 0.9rem;
+  font-size: 0.925rem;
   font-weight: 600;
   color: var(--text-secondary);
 }
@@ -257,12 +263,6 @@
   min-height: 7rem;
 }
 
-.form-error {
-  margin-top: 0.75rem;
-  color: var(--accent-primary);
-  font-size: 0.875rem;
-  font-weight: 600;
-}
 
 /* FAQ Accordion */
 .accordion-item {
@@ -321,9 +321,21 @@
 }
 
 /* The inner wrapper is what actually collapses, so panels of any length
-   animate correctly — a fixed max-height clips long answers. */
+   animate correctly — a fixed max-height clips long answers.
+
+   `visibility` is what takes a closed answer out of the accessibility tree and
+   out of the tab order. Clipping it to zero height only hid it visually: the
+   button said aria-expanded="false" while screen readers still read all four
+   answers. It is stepped, so hiding waits for the collapse to finish. */
 .accordion-body > div {
   overflow: hidden;
+  visibility: hidden;
+  transition: visibility 0s linear var(--transition-normal);
+}
+
+.accordion-item.active .accordion-body > div {
+  visibility: visible;
+  transition: visibility 0s;
 }
 
 .accordion-body p {

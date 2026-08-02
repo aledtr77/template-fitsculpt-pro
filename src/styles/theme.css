@@ -16,7 +16,10 @@
 
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
-  --text-muted: #7b8ba1;
+  /* Muted is the dimmest text on the site and it lands on small type, so it is
+     held to 7:1 against every surface — including --bg-tertiary, the lightest,
+     where the previous value sat at 4.31:1 and failed AA outright. */
+  --text-muted: #a8b6c8;
 
   /* Kinetic athletic accents — warm amber core, cool secondary for data */
   --accent-primary: #f97316;
@@ -84,7 +87,7 @@
 
   --text-primary: #0f172a;
   --text-secondary: #475569;
-  --text-muted: #5a6675;
+  --text-muted: #414d5e;
 
   /* Accents darken on light surfaces. They are picked against the *tinted*
      pills they sit on, not plain white — orange-700 clears AA on white but
@@ -92,7 +95,10 @@
   --accent-primary: #9a3412;
   --accent-secondary: #0369a1;
   --accent-highlight: #0369a1;
-  --accent-gold: #b45309;
+  /* Text-only token — the gold *fills* come from --gradient-gold and are
+     untouched. Darkened from #b45309, which sat at 4.58:1 and was thin for the
+     small type it lands on (.billing-save, .footer-link-accent). */
+  --accent-gold: #92400e;
 
   --accent-tint: rgba(154, 52, 18, 0.1);
   --accent-tint-strong: rgba(154, 52, 18, 0.16);
