@@ -38,13 +38,20 @@
        landing page: the legal pages and the 404 reach them through index.html,
        the landing page itself through a bare fragment. -->
   <header class="site-header scrolled">
-    <div class="container header-container">
-      <a href="/" class="brand-logo">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M6 5v14M18 5v14M3 8v8M21 8v8M9 12h6"/>
-        </svg>
-        <span>FIT<span class="text-gradient">SCULPT</span> <span class="brand-badge">PRO</span></span>
-      </a>
+    <div class="header-container">
+      <div class="header-brand">
+        <a href="/" class="brand-logo">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 5v14M18 5v14M3 8v8M21 8v8M9 12h6"/>
+          </svg>
+          <span>FIT<span class="text-gradient">SCULPT</span> <span class="brand-badge">PRO</span></span>
+        </a>
+        <button type="button" class="theme-toggle" id="themeToggleBtn" aria-label="Switch theme">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+          </svg>
+        </button>
+      </div>
 
       <nav class="nav-menu" id="navMenu" aria-label="Main">
         <a href="/" class="nav-link">Home</a>
@@ -55,22 +62,13 @@
         <a href="/#pricing" class="nav-link">Memberships</a>
         <a href="/#faq" class="nav-link">FAQ</a>
         <a href="/#contact" class="nav-link">Contact</a>
-        <a href="/#contact" class="btn btn-primary nav-cta">Claim Free Call</a>
       </nav>
 
-      <div class="header-actions">
-        <button type="button" class="theme-toggle" id="themeToggleBtn" aria-label="Switch theme">
-          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
-          </svg>
-        </button>
-        <a href="/#contact" class="btn btn-primary">Claim Free Call</a>
-        <button type="button" class="mobile-toggle" id="mobileToggle" aria-label="Menu" aria-expanded="false" aria-controls="navMenu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
+      <button type="button" class="mobile-toggle" id="mobileToggle" aria-label="Menu" aria-expanded="false" aria-controls="navMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </header>
 

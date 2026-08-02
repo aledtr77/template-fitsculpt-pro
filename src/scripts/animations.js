@@ -104,9 +104,9 @@ function initMobileNav() {
     navMenu.classList.toggle('active', show);
     navBackdrop?.classList.toggle('active', show);
 
-    // Reference-counted: the header sits above the drawer, so the dialog can be
-    // opened on top of it, and a plain `overflow = ''` on whichever closed
-    // first unfroze the page behind the one still open.
+    // Reference-counted: the drawer and the dialog can be open at once, and a
+    // plain `overflow = ''` on whichever closed first unfroze the page behind
+    // the one still open.
     if (show) lockScroll(); else unlockScroll();
 
     if (show) {
@@ -139,7 +139,8 @@ function initMobileNav() {
 
   // Leaving the drawer breakpoint while it is open would otherwise strand the
   // page with a locked body scroll.
-  const breakpoint = window.matchMedia('(min-width: 869px)');
+  // Mirrors the drawer breakpoint in layout.css (max-width: 1024px).
+  const breakpoint = window.matchMedia('(min-width: 1025px)');
   breakpoint.addEventListener('change', (e) => {
     if (e.matches && isOpen()) setMenu(false);
   });

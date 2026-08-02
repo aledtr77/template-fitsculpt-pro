@@ -3,10 +3,9 @@
  * and the mobile drawer.
  *
  * Both freeze the page behind them and both have to keep the keyboard inside
- * themselves. The scroll lock is reference-counted because the two can overlap:
- * the header sits above the drawer, so its CTA stays clickable while the drawer
- * is open, and whichever closed first used to unfreeze the page underneath the
- * other one.
+ * themselves. The scroll lock is reference-counted because the two can overlap,
+ * and whichever closed first used to unfreeze the page underneath the other
+ * one.
  */
 
 export const FOCUSABLE = [

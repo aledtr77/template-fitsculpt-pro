@@ -100,15 +100,29 @@
   opacity: 1;
 }
 
+/* The bar spans the viewport rather than sitting inside `.container`: capping it
+   at the content width left the links bunched in the middle of a wide screen.
+   The inline padding scales with the viewport so the logo and the last link end
+   up at the edges without touching them. */
 .header-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: clamp(1rem, 3vw, 3rem);
+  width: 100%;
   height: 100%;
-  /* Keeps the logo, nav and actions above the glass panel behind them */
+  padding-inline: clamp(1.25rem, 3.5vw, 3.5rem);
+  /* Keeps the logo, nav and toggle above the glass panel behind them */
   position: relative;
   z-index: 1;
+}
+
+/* Logo and theme switch travel together at the far left */
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
 }
 
 .brand-logo {
@@ -180,19 +194,6 @@
 .nav-link:hover::after,
 .nav-link.active::after {
   width: 100%;
-}
-
-.header-actions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-/* Lives in the drawer only. Below 560px the header CTA is hidden for room, and
-   without this a phone had no call to action at all between the hero and the
-   form at the very bottom of the page. */
-.nav-cta {
-  display: none;
 }
 
 /* Mobile Navigation Backdrop & Drawer */
@@ -407,9 +408,10 @@
   color: var(--text-muted);
 }
 
-/* From the drawer breakpoint up there is room to set the two paragraphs side by
-   side, so the notice uses the whole footer width instead of running down a
-   single column pinned to the left edge. The credit line spans underneath. */
+/* Above the footer's single-column breakpoint there is room to set the two
+   paragraphs side by side, so the notice uses the whole footer width instead of
+   running down a single column pinned to the left edge. The credit line spans
+   underneath. */
 @media (min-width: 869px) {
   .footer-notice {
     grid-template-columns: 1fr 1fr;
@@ -422,13 +424,15 @@
 }
 
 /* Responsive Layout Media Queries */
+
+/* The logo, the switch and eight links need around 950px before the row starts
+   to crowd, so the drawer takes over here rather than at a narrower width where
+   the links were already cramped. */
 @media (max-width: 1024px) {
   .footer-grid {
     grid-template-columns: 1fr 1fr;
   }
-}
 
-@media (max-width: 868px) {
   .nav-menu {
     position: fixed;
     top: 0;
@@ -462,13 +466,9 @@
   .mobile-toggle {
     display: flex;
   }
+}
 
-  .nav-cta {
-    display: inline-flex;
-    align-self: stretch;
-    justify-content: center;
-  }
-
+@media (max-width: 868px) {
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -480,8 +480,20 @@
   }
 }
 
-@media (max-width: 560px) {
-  .header-actions .btn {
-    display: none;
+/* On the narrowest phones the wordmark, the switch and the burger stop fitting
+   on one line at full size, so the logo gives up a little of it. */
+@media (max-width: 480px) {
+  .header-brand {
+    gap: 0.6rem;
+  }
+
+  .brand-logo {
+    font-size: 1.25rem;
+    gap: 0.5rem;
+  }
+
+  .brand-logo svg {
+    width: 28px;
+    height: 28px;
   }
 }
