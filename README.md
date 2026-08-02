@@ -1,11 +1,16 @@
-# FitSculpt Pro
+# FitSculpt Luxe
 
-A multi-page website template for fitness coaches and personal trainers. Dark
+A multi-page website template for physique and body-sculpting coaches. Dark
 interface, built around getting the visitor to book a call.
 
 **Live demo: [fitsculpt-pro.pages.dev](https://fitsculpt-pro.pages.dev/)**
 
-[![FitSculpt Pro — the landing page in its dark theme](.github/preview.jpg)](https://fitsculpt-pro.pages.dev/)
+[![FitSculpt Luxe — the landing page in its dark theme](.github/preview.jpg)](https://fitsculpt-pro.pages.dev/)
+
+The demo copy is written for a coach working with women on strength and physique,
+and the sections follow that: protocols rather than a generic service list, a
+metrics calculator, before-and-after results, membership tiers. Swap the text and
+the same structure serves any coaching practice that sells programmes.
 
 Written by hand in HTML, CSS and JavaScript, assembled with Vite. No framework, no
 CMS, no bought theme underneath.
@@ -45,8 +50,8 @@ vite.config.js
 Node 18 or newer.
 
 ```bash
-git clone https://github.com/aledtr77/template-fitsculpt-pro.git
-cd template-fitsculpt-pro
+git clone https://github.com/aledtr77/template-fitsculpt-luxe.git
+cd template-fitsculpt-luxe
 npm install
 npm run dev      # http://localhost:3000
 npm run build    # static output in dist/
@@ -61,6 +66,10 @@ The images bundled here are placeholders so the pages can be previewed as intend
 **They are not covered by the licence — replace them with your own** before putting
 anything online. The same goes for the copy: every headline, price and testimonial is
 filler text.
+
+Two more in `index.html`: `og:url` and `og:image` carry the demo's origin, because a
+scraper cannot resolve a relative path — point them at your own domain, and replace
+`public/og-image.jpg` with a card of your own site.
 
 ## The paid templates
 
