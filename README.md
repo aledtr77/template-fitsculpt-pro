@@ -1,11 +1,11 @@
-# FitSculpt Luxe
+# FitSculpt Pro
 
 A multi-page website template for physique and body-sculpting coaches. Dark
 interface, built around getting the visitor to book a call.
 
 **Live demo: [fitsculpt-pro.pages.dev](https://fitsculpt-pro.pages.dev/)**
 
-[![FitSculpt Luxe — the landing page in its dark theme](.github/preview.jpg)](https://fitsculpt-pro.pages.dev/)
+[![FitSculpt Pro — the landing page in its dark theme](.github/preview.jpg)](https://fitsculpt-pro.pages.dev/)
 
 The demo copy is written for a coach working with women on strength and physique,
 and the sections follow that: protocols rather than a generic service list, a
@@ -50,8 +50,8 @@ vite.config.js
 Node 18 or newer.
 
 ```bash
-git clone https://github.com/aledtr77/template-fitsculpt-luxe.git
-cd template-fitsculpt-luxe
+git clone https://github.com/aledtr77/template-fitsculpt-pro.git
+cd template-fitsculpt-pro
 npm install
 npm run dev      # http://localhost:3000
 npm run build    # static output in dist/

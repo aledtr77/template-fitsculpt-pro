@@ -47,10 +47,12 @@
 
 /* 404 */
 .error-page {
-  min-height: 100dvh;
+  /* Fills what is left below the fixed header, and pads past it, so the
+     message is neither tucked under the bar nor pushed off-screen. */
+  min-height: calc(100dvh - var(--header-height));
   display: flex;
   align-items: center;
-  padding: 4rem 0;
+  padding: calc(var(--header-height) + 4rem) 0 4rem;
 }
 
 .error-code {
@@ -126,7 +128,9 @@
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 2.25rem;
+  /* Scales the gap with the space left over between the logo and the actions,
+     instead of a fixed value that squeezes the links into two lines. */
+  gap: clamp(1.1rem, 1.9vw, 2.25rem);
 }
 
 .nav-link {
@@ -135,6 +139,9 @@
   color: var(--text-secondary);
   position: relative;
   padding: 0.5rem 0;
+  /* Flex items shrink below their content: without this a label breaks in
+     half rather than the row running out of room. */
+  white-space: nowrap;
 }
 
 .nav-link:hover,

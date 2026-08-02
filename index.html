@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FitSculpt Luxe | Elite Female Body Sculpting &amp; Bio-Individual Coaching</title>
+  <title>FitSculpt Pro | Elite Female Body Sculpting &amp; Bio-Individual Coaching</title>
   <meta name="description" content="Sculpt a lean, powerful female physique with elite 1-on-1 coaching, custom bio-individual nutrition, and science-backed body sculpting by Master Coach Elena Vance.">
   <meta name="theme-color" content="#0e1219">
 
@@ -13,12 +13,12 @@
        src/assets/ gets a content hash in its filename and the URL would break on
        the next build. -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="FitSculpt Luxe - Elite Female Physique Transformation">
+  <meta property="og:title" content="FitSculpt Pro - Elite Female Physique Transformation">
   <meta property="og:description" content="Custom workout protocols and bio-individual nutrition engineered exclusively for ambitious women.">
   <meta property="og:image" content="https://fitsculpt-pro.pages.dev/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="The FitSculpt Luxe landing page: Sculpt A Lean, Defined & Powerful Physique.">
+  <meta property="og:image:alt" content="The FitSculpt Pro landing page: Sculpt A Lean, Defined & Powerful Physique.">
   <meta property="og:url" content="https://fitsculpt-pro.pages.dev/">
   <meta name="twitter:card" content="summary_large_image">
 
@@ -53,24 +53,26 @@
   <!-- Backdrop for Mobile Drawer -->
   <div class="nav-backdrop" id="navBackdrop"></div>
 
-  <!-- Site Header -->
+  <!-- Site Header. Identical on every page: the labels never change, only the
+       hrefs, which resolve to a section on the home page and to a file elsewhere. -->
   <header class="site-header" id="siteHeader">
     <div class="container header-container">
       <a href="index.html" class="brand-logo" id="brandLogo">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M6 5v14M18 5v14M3 8v8M21 8v8M9 12h6"/>
         </svg>
-        <span>FIT<span class="text-gradient">SCULPT</span> <span class="brand-badge">LUXE</span></span>
+        <span>FIT<span class="text-gradient">SCULPT</span> <span class="brand-badge">PRO</span></span>
       </a>
 
       <nav class="nav-menu" id="navMenu" aria-label="Main">
-        <a href="#hero" class="nav-link active">Home</a>
-        <a href="#about" class="nav-link">About Coach</a>
-        <a href="#calculator" class="nav-link">Metrics Calc</a>
-        <a href="#programs" class="nav-link">Protocols</a>
+        <a href="#hero" class="nav-link">Home</a>
+        <a href="pages/about.html" class="nav-link">About</a>
+        <a href="#calculator" class="nav-link">Calculator</a>
+        <a href="pages/programs.html" class="nav-link">Programs</a>
         <a href="#transformations" class="nav-link">Results</a>
         <a href="#pricing" class="nav-link">Memberships</a>
         <a href="#faq" class="nav-link">FAQ</a>
+        <a href="pages/contact.html" class="nav-link">Contact</a>
       </nav>
 
       <div class="header-actions">
@@ -607,7 +609,7 @@
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M6 5v14M18 5v14M3 8v8M21 8v8M9 12h6"/>
             </svg>
-            <span>FIT<span class="text-gradient">SCULPT</span></span>
+            <span>FIT<span class="text-gradient">SCULPT</span> <span class="brand-badge">PRO</span></span>
           </a>
           <p>Empowering women worldwide to build strength, confidence, and lifelong athletic fitness.</p>
           <!-- Official brand glyphs and colours. Placeholder destinations:
@@ -640,28 +642,28 @@
           <h2>Navigation</h2>
           <div class="footer-links">
             <a href="#hero">Home</a>
-            <a href="#about">About Coach</a>
+            <a href="pages/about.html">About the Coach</a>
             <a href="#calculator">BMI Calculator</a>
-            <a href="#programs">Programs</a>
+            <a href="pages/programs.html">Training Programs</a>
           </div>
         </nav>
 
         <nav class="footer-column" aria-label="Programs">
           <h2>Programs</h2>
           <div class="footer-links">
-            <a href="#programs">Sculpt &amp; Tone</a>
-            <a href="#programs">Metabolic HIIT</a>
-            <a href="#programs">1-on-1 VIP Mentorship</a>
+            <a href="pages/programs.html">Sculpt &amp; Tone</a>
+            <a href="pages/programs.html">Metabolic HIIT</a>
+            <a href="pages/programs.html">1-on-1 VIP Mentorship</a>
             <a href="#pricing">Membership Plans</a>
           </div>
         </nav>
 
-        <nav class="footer-column" aria-label="Legal and templates">
-          <h2>Legal &amp; Templates</h2>
+        <nav class="footer-column" aria-label="More">
+          <h2>More</h2>
           <div class="footer-links">
-            <a href="pages/about.html">About Page</a>
-            <a href="pages/programs.html">Programs Overview</a>
-            <a href="pages/contact.html">Contact Us</a>
+            <a href="#transformations">Results</a>
+            <a href="#faq">FAQ</a>
+            <a href="pages/contact.html">Contact</a>
             <a href="https://codedge.it/templates/" target="_blank" rel="noopener noreferrer" class="footer-link-accent">
               Commercial Template Licence
               <span aria-hidden="true">&rarr;</span>
@@ -672,7 +674,7 @@
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2026 FitSculpt Luxe Template. All rights reserved.</p>
+        <p>&copy; 2026 FitSculpt Pro Template. All rights reserved.</p>
         <p>Built with Vite &amp; Modern Vanilla CSS</p>
       </div>
     </div>

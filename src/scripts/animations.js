@@ -36,6 +36,14 @@ function initHeaderScroll() {
   const header = document.querySelector('.site-header');
   if (!header) return;
 
+  // The transparent state only makes sense over the hero. Pages without one
+  // ship the solid class in their markup, and this would strip it straight
+  // back off at scrollY 0, leaving a see-through bar over the content.
+  if (!document.querySelector('.hero-section')) {
+    header.classList.add('scrolled');
+    return;
+  }
+
   onScrollFrame(() => {
     header.classList.toggle('scrolled', window.scrollY > 40);
   });
