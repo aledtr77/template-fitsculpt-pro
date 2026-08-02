@@ -1,21 +1,19 @@
 /**
- * Modal & Lead Booking Module
+ * Booking Dialog
  *
  * The dialog is a plain element rather than <dialog>, so the backdrop blur and
  * scale-in transition stay under CSS control. That makes focus management ours
  * to handle: trap it while open, hand it back on close.
+ *
+ * Every CTA declares the offer it belongs to via `data-open-modal="<value>"`,
+ * and that value preselects the interest field. Without it, a visitor who
+ * clicked "Apply For VIP" landed in exactly the same blank form as one who
+ * clicked a programme card, and the single fact worth knowing about the lead —
+ * what they were looking at when they decided — was thrown away.
  */
 
 import { showFormSuccess } from './forms.js';
-
-const FOCUSABLE = [
-  'a[href]',
-  'button:not([disabled])',
-  'input:not([disabled])',
-  'select:not([disabled])',
-  'textarea:not([disabled])',
-  '[tabindex]:not([tabindex="-1"])'
-].join(', ');
+import { lockScroll, unlockScroll, trapTab, FOCUSABLE } from './overlay.js';
 
 export function initModal() {
   const modalOverlay = document.getElementById('consultationModal');
@@ -24,14 +22,22 @@ export function initModal() {
   const openModalBtns = document.querySelectorAll('[data-open-modal]');
   const closeModalBtn = document.getElementById('closeModalBtn');
   const bookingForm = document.getElementById('bookingForm');
+  const interest = modalOverlay.querySelector('[data-interest-select]');
   let lastFocused = null;
 
   const isOpen = () => modalOverlay.classList.contains('active');
 
-  const openModal = () => {
+  /** Selects `value` only if the dialog actually offers it. */
+  const presetInterest = (value) => {
+    if (!interest || !value) return;
+    if ([...interest.options].some((o) => o.value === value)) interest.value = value;
+  };
+
+  const openModal = (value) => {
     lastFocused = document.activeElement;
+    presetInterest(value);
     modalOverlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    lockScroll();
 
     // focus() on a still-hidden element is silently ignored, which would also
     // strand the tab trap below (it keys off activeElement being inside the
@@ -49,7 +55,7 @@ export function initModal() {
   const closeModal = () => {
     if (!isOpen()) return;
     modalOverlay.classList.remove('active');
-    document.body.style.overflow = '';
+    unlockScroll();
 
     // Hand focus back to whatever opened the dialog, or keyboard users land
     // at the top of the document with no idea where they are.
@@ -60,7 +66,7 @@ export function initModal() {
   openModalBtns.forEach((btn) => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      openModal();
+      openModal(btn.dataset.openModal);
     });
   });
 
@@ -80,21 +86,7 @@ export function initModal() {
       return;
     }
 
-    if (e.key !== 'Tab') return;
-
-    const focusable = [...modalOverlay.querySelectorAll(FOCUSABLE)];
-    if (focusable.length === 0) return;
-
-    const first = focusable[0];
-    const last = focusable[focusable.length - 1];
-
-    if (e.shiftKey && document.activeElement === first) {
-      e.preventDefault();
-      last.focus();
-    } else if (!e.shiftKey && document.activeElement === last) {
-      e.preventDefault();
-      first.focus();
-    }
+    trapTab(modalOverlay, e);
   });
 
   if (bookingForm) {
@@ -106,7 +98,7 @@ export function initModal() {
 
       showFormSuccess(bookingForm, {
         title: 'Consultation requested',
-        message: `Thanks ${name.value.trim()} — Coach Elena will review your fitness profile and reach out within 24 hours.`,
+        message: `Thanks ${name.value.trim()} — Coach Elena will review your request and reach out within 24 hours.`,
         actionLabel: 'Close window',
         onAction: closeModal
       });

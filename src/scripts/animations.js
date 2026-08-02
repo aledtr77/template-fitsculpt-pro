@@ -2,6 +2,8 @@
  * UI Interactions & Animations Module
  */
 
+import { lockScroll, unlockScroll, trapTab } from './overlay.js';
+
 export function initAnimations() {
   initHeaderScroll();
   initMobileNav();
@@ -93,15 +95,28 @@ function initMobileNav() {
 
   if (!mobileToggle || !navMenu) return;
 
+  const isOpen = () => mobileToggle.getAttribute('aria-expanded') === 'true';
+
   const setMenu = (show) => {
+    if (show === isOpen()) return;
+
     mobileToggle.setAttribute('aria-expanded', String(show));
     navMenu.classList.toggle('active', show);
     navBackdrop?.classList.toggle('active', show);
-    // Lock the page behind the drawer, otherwise the body scrolls under it.
-    document.body.style.overflow = show ? 'hidden' : '';
-  };
 
-  const isOpen = () => mobileToggle.getAttribute('aria-expanded') === 'true';
+    // Reference-counted: the header sits above the drawer, so the dialog can be
+    // opened on top of it, and a plain `overflow = ''` on whichever closed
+    // first unfroze the page behind the one still open.
+    if (show) lockScroll(); else unlockScroll();
+
+    if (show) {
+      // The drawer covers the viewport; leaving focus on the toggle behind it
+      // means a keyboard user tabs through the page underneath.
+      navMenu.querySelector('a')?.focus();
+    } else {
+      mobileToggle.focus();
+    }
+  };
 
   mobileToggle.addEventListener('click', () => setMenu(!isOpen()));
   navBackdrop?.addEventListener('click', () => setMenu(false));
@@ -111,10 +126,15 @@ function initMobileNav() {
   });
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && isOpen()) {
+    if (!isOpen()) return;
+
+    if (e.key === 'Escape') {
       setMenu(false);
-      mobileToggle.focus();
+      return;
     }
+
+    // The drawer is modal while it is open, so the keyboard stays in it.
+    trapTab(navMenu, e);
   });
 
   // Leaving the drawer breakpoint while it is open would otherwise strand the
@@ -187,7 +207,10 @@ function initPricingToggle() {
       if (!next) return;
 
       amount.textContent = next;
-      if (period) period.textContent = yearly ? '/year (Save 20%)' : '/month';
+      // `data-yearly` is the *monthly* rate when billed annually, so the period
+      // has to say so. Labelling $39 as "/year" against a $49 month read as a
+      // 93% discount instead of the 20% the toggle actually offers.
+      if (period) period.textContent = yearly ? '/month, billed annually' : '/month';
     });
 
     labels.forEach((label, i) => {
