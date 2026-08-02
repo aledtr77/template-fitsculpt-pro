@@ -3,6 +3,10 @@
 A multi-page website template for fitness coaches and personal trainers. Dark
 interface, built around getting the visitor to book a call.
 
+**Live demo: [fitsculpt-pro.pages.dev](https://fitsculpt-pro.pages.dev/)**
+
+[![FitSculpt Pro — the landing page in its dark theme](.github/preview.jpg)](https://fitsculpt-pro.pages.dev/)
+
 Written by hand in HTML, CSS and JavaScript, assembled with Vite. No framework, no
 CMS, no bought theme underneath.
 
@@ -20,7 +24,8 @@ Reselling it as a template is not allowed — see [LICENSE](LICENSE).
 - **Filterable program grid** for splitting training plans by type
 - **Monthly / annual pricing toggle**
 - **Consultation modal** with client-side validation for booking requests
-- **Light and dark themes**, remembered in `localStorage`
+- **Light and dark themes** — the first visit follows `prefers-color-scheme`, the
+  choice is then remembered in `localStorage` and applied before first paint
 
 ## Stack
 
@@ -48,7 +53,7 @@ npm run build    # static output in dist/
 ```
 
 The build is plain static files — deploy them on Cloudflare Pages, Netlify, Vercel or
-GitHub Pages without changes.
+GitHub Pages without changes. The demo linked above is that `dist/` folder, unedited.
 
 ## Before you publish it
 
