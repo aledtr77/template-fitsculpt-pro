@@ -2,7 +2,7 @@
   "name": "fitsculpt-pro",
   "private": true,
   "version": "1.0.0",
-  "description": "FitSculpt Pro - multi-page website template for physique and body-sculpting coaches",
+  "description": "FitSculpt Pro - single-page landing template for physique and body-sculpting coaches",
   "license": "SEE LICENSE IN LICENSE",
   "type": "module",
   "scripts": {
