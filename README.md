@@ -59,7 +59,7 @@ every time.
 
 ## Run it locally
 
-Node 18 or newer.
+Node 20.19 or newer (22.12+ on the 22 line) — what Vite 8 asks for.
 
 ```bash
 git clone https://github.com/aledtr77/template-fitsculpt-pro.git
