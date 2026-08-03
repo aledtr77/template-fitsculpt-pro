@@ -23,7 +23,11 @@
 
   /* Kinetic athletic accents — warm amber core, cool secondary for data */
   --accent-primary: #f97316;
-  --accent-secondary: #0284c7;
+  /* Secondary is only ever painted as text (the calculator's highest BMI band).
+     Sky-600 sat at 3.65:1 on --bg-tertiary, the panel it lands on, and the label
+     is 17.6px — under the size that would let 3:1 pass. Sky-500 clears AA and
+     stays a step below --accent-highlight, so the two bands still read apart. */
+  --accent-secondary: #0ea5e9;
   --accent-highlight: #38bdf8;
   --accent-gold: #fbbf24;
 
@@ -35,10 +39,11 @@
   --accent-tint-strong: rgba(249, 115, 22, 0.18);
   --accent-ring: rgba(249, 115, 22, 0.45);
 
-  /* Gradients */
+  /* Gradients. Each accent ramp comes in two: the plain one is a fill that dark
+     ink sits on, the `-text` one is painted as text and has to contrast with the
+     page instead. On dark surfaces the two coincide; the light theme splits them. */
   --gradient-accent: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-  /* Two gold ramps with opposite jobs: `gold` is a fill that dark ink sits on,
-     `gold-text` is painted as text and has to contrast with the page instead. */
+  --gradient-accent-text: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
   --gradient-gold: linear-gradient(135deg, #fcd34d 0%, #f59e0b 100%);
   --gradient-gold-text: linear-gradient(135deg, #fcd34d 0%, #f59e0b 100%);
   --gradient-card: linear-gradient(145deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
@@ -104,8 +109,13 @@
   --accent-tint-strong: rgba(154, 52, 18, 0.16);
   --accent-ring: rgba(154, 52, 18, 0.4);
 
-  /* Fill ramp is unchanged so ink still reads on gold buttons; only the text
-     ramp darkens, because the light one sits at ~1.4:1 on white. */
+  /* Fill ramps are unchanged so ink still reads on the amber and gold buttons;
+     only the text ramps darken. The gold one sits at ~1.4:1 on white, and the
+     amber one opened at 2.68:1 — under even the 3:1 large-text floor, on the
+     wordmark, every gradient heading, the stat figures and the prices. The
+     amber ramp lands on --accent-primary, so gradient text and flat accent text
+     finish on the same colour. */
+  --gradient-accent-text: linear-gradient(135deg, #c2410c 0%, #9a3412 100%);
   --gradient-gold-text: linear-gradient(135deg, #d97706 0%, #b45309 100%);
   --gradient-card: linear-gradient(145deg, rgba(15, 23, 42, 0.03) 0%, rgba(15, 23, 42, 0.01) 100%);
 

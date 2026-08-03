@@ -24,6 +24,9 @@ export function initModal() {
   const bookingForm = document.getElementById('bookingForm');
   const interest = modalOverlay.querySelector('[data-interest-select]');
   let lastFocused = null;
+  // Set while the confirmation panel stands in for the form; calling it puts
+  // the form back. See closeModal.
+  let restoreForm = null;
 
   const isOpen = () => modalOverlay.classList.contains('active');
 
@@ -56,6 +59,13 @@ export function initModal() {
     if (!isOpen()) return;
     modalOverlay.classList.remove('active');
     unlockScroll();
+
+    // Put the form back on the way out. Escape and a backdrop click bypass the
+    // panel's own button, which used to be the only thing that restored it: the
+    // next visitor to open the dialog found the previous confirmation and no
+    // fields at all, with nothing on screen able to bring them back.
+    restoreForm?.();
+    restoreForm = null;
 
     // Hand focus back to whatever opened the dialog, or keyboard users land
     // at the top of the document with no idea where they are.
@@ -96,11 +106,16 @@ export function initModal() {
       const name = bookingForm.querySelector('#clientName');
       if (!name) return;
 
-      showFormSuccess(bookingForm, {
+      restoreForm = showFormSuccess(bookingForm, {
         title: 'Consultation requested',
         message: `Thanks ${name.value.trim()} — Coach Elena will review your request and reach out within 24 hours.`,
         actionLabel: 'Close window',
-        onAction: closeModal
+        // The panel's button restores the form itself before this runs, so drop
+        // the handle first or closeModal would fire a second, stray restore.
+        onAction: () => {
+          restoreForm = null;
+          closeModal();
+        }
       });
     });
   }
