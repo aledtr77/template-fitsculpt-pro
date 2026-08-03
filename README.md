@@ -1,7 +1,7 @@
 # FitSculpt Pro
 
-A single-page landing template for physique and body-sculpting coaches. Dark
-interface, built around getting the visitor to book a call.
+A single-page landing template for physique and body-sculpting coaches. Light and
+dark themes, built around getting the visitor to book a call.
 
 **Live demo: [fitsculpt-pro.pages.dev](https://fitsculpt-pro.pages.dev/)**
 
