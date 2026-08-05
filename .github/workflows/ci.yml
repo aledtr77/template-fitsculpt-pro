@@ -25,7 +25,7 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      # Qui non si pubblica niente: il build serve a sapere che chi clona
-      # questo repo ottiene qualcosa che compila.
+      # Nothing gets published here: the build is what says that whoever
+      # clones this repo gets something that compiles.
       - name: Build
         run: npm run build
