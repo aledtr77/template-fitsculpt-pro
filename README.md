@@ -3,7 +3,7 @@
 A single-page landing template for physique and body-sculpting coaches. Light and
 dark themes, built around getting the visitor to book a call.
 
-**Live demo: [fitsculpt-pro.pages.dev](https://fitsculpt-pro.pages.dev/)**
+**Live site: [fitsculpt-pro.pages.dev](https://fitsculpt-pro.pages.dev/)**
 
 [![FitSculpt Pro — the landing page in its dark theme](.github/preview.jpg)](https://fitsculpt-pro.pages.dev/)
 
@@ -77,7 +77,7 @@ npm run build    # static output in dist/
 ```
 
 The build is plain static files. Deploy them on Cloudflare Pages, Netlify, Vercel, a
-GitHub Pages user site or any custom domain without changes — the demo linked above is
+GitHub Pages user site or any custom domain without changes — the site linked above is
 that `dist/` folder, unedited.
 
 One exception: a GitHub Pages **project** site serves from a subpath
@@ -107,7 +107,8 @@ AI imagery is still there — delete it once you have swapped in real photograph
 
 **Point the origins at your domain.** `og:url`, `og:image` and `rel="canonical"` on
 every page, the `@id`/`url` fields in the JSON-LD block in `index.html`, and both
-`public/robots.txt` and `public/sitemap.xml` all carry the demo's origin — a scraper
+`public/robots.txt` and `public/sitemap.xml` all carry the origin of the site linked
+above — a scraper
 cannot resolve a relative path. Replace `public/og-image.jpg` with a card of your own.
 
 **The structured data deliberately omits ratings.** `index.html` ships `WebSite`,
