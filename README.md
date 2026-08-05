@@ -1,5 +1,8 @@
 # FitSculpt Pro
 
+[![lint · build](https://img.shields.io/github/actions/workflow/status/aledtr77/template-fitsculpt-pro/ci.yml?branch=main&label=lint%20%C2%B7%20build)](https://github.com/aledtr77/template-fitsculpt-pro/actions/workflows/ci.yml)
+[![licence: source-available](https://img.shields.io/badge/licence-source--available-0969da)](LICENSE)
+
 A single-page landing template for physique and body-sculpting coaches. Light and
 dark themes, built around getting the visitor to book a call.
 
