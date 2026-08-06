@@ -12,8 +12,8 @@ and the sections follow that: protocols rather than a generic service list, a
 metrics calculator, before-and-after results, membership tiers. Swap the text and
 the same structure serves any coaching practice that sells programmes.
 
-Written by hand in HTML, CSS and JavaScript, assembled with Vite. No framework, no
-CMS, no bought theme underneath.
+Built with semantic HTML, modular CSS and JavaScript, then assembled with Vite into a
+static site that can be deployed without a server.
 
 Published as a code reference — this is what my markup and CSS actually look like.
 Read it, take it apart, build on it.
